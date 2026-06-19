@@ -907,7 +907,8 @@ nav a.active:after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 25, 47, 0.8);
+  /* lighter overlay to reveal more of the image */
+  background: rgba(10, 25, 47, 0.22);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -923,7 +924,8 @@ nav a.active:after {
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
+  transform: scale(1.04);
+  filter: brightness(1.03);
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -2614,11 +2616,12 @@ body {
 
 /* Gallery */
 .gallery-overlay {
-  background: rgba(10, 25, 47, 0.9);
+  /* keep this in sync with the primary overlay above */
+  background: rgba(10, 25, 47, 0.22);
 }
 
 [data-theme="dark"] .gallery-overlay {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.35);
 }
 
 /* Department Wrapper */
@@ -3169,6 +3172,30 @@ body {
   margin-bottom: 0;
   color: var(--gray);
 }
+
+/* Overrides locaux pour la section Directeur : remplacer bleu-ciel par corail visible */
+.section-director {
+  --dir-secondary: #09026b;
+  --dir-secondary-dark: #000147;
+  --dir-gradient-secondary: linear-gradient(135deg, #0e005c 0%, #00095e 100%);
+}
+
+.section-director .photo-frame { border: 4px solid var(--dir-secondary); }
+.section-director .photo-badge { background: var(--dir-gradient-secondary); color: #ffffff; }
+.section-director .director-social .social-icon { background: rgba(255,107,107,0.08); color: var(--dir-secondary); border: 1px solid rgba(255,107,107,0.12); }
+.section-director .director-social .social-icon:hover { background: var(--dir-secondary); color: var(--primary); box-shadow: 0 10px 20px rgba(255,107,107,0.22); }
+.section-director .director-title { color: var(--dir-secondary); }
+.section-director .badge { background: rgba(255,107,107,0.08); color: var(--dir-secondary); }
+.section-director .director-bio h4 i,
+.section-director .director-achievements h4 i,
+.section-director .director-skills h4 i { color: var(--dir-secondary); }
+.section-director .achievement-icon { background: rgba(255,107,107,0.08); }
+.section-director .achievement-icon i { color: var(--dir-secondary); }
+.section-director .director-quote-box i { color: var(--dir-secondary); opacity: 0.28; }
+.section-director .quote-author { color: var(--dir-secondary); }
+.section-director .timeline-grid::before { background: var(--dir-secondary); opacity: 0.18; }
+.section-director .timeline-year { color: var(--dir-secondary); }
+.section-director .timeline-year::after { background: var(--dir-secondary); }
 
 /* Dark Theme Adjustments */
 [data-theme="dark"] .director-profile,
