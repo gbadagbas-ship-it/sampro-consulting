@@ -800,6 +800,16 @@ nav a.active:after {
   transition: opacity 0.3s ease;
 }
 
+/* Slight dark overlay to improve text readability on hero background */
+.hero-video-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero-video-background.video-loading::before {
   opacity: 1;
 }
