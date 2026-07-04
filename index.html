@@ -59,9 +59,12 @@
         <a href="#director">Directeur</a>
         <a href="#testimonials" data-key="testimonials">Témoignages</a>
         <a href="#contact" data-key="contact">Contact</a>
-        <button class="btn btn-primary" id="mobileLangBtn" style="margin-top:24px; width:auto; padding:12px 32px;">
-            FR / EN
-        </button>
+        <div class="mobile-menu-actions">
+            <button class="nav-btn" id="mobileThemeToggle" aria-label="Changer le thème">☀</button>
+            <button class="btn btn-primary" id="mobileLangBtn" style="margin-top:0; width:auto; padding:12px 32px;">
+                FR / EN
+            </button>
+        </div>
     </div>
 
     <!-- ========== HERO — OPTION 1 : BOUTONS CÔTE À CÔTE ========== -->
@@ -182,6 +185,17 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Lightbox pour mobile -->
+                <div id="galleryLightbox" class="gallery-lightbox" aria-hidden="true">
+                    <div class="lightbox-bg"></div>
+                    <button class="lightbox-btn-close" id="lightboxBtnClose" aria-label="Fermer">✕</button>
+                    <div class="lightbox-content">
+                        <img id="lightboxImg" src="" alt="" />
+                        <p id="lightboxAlt" class="lightbox-alt"></p>
+                    </div>
+                </div>
+
             </div> <BR><BR> <BR></BR>
 
             <!-- Bloc 3 : Valeurs -->
