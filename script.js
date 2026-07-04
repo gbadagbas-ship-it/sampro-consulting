@@ -708,8 +708,8 @@ Envoyé depuis le formulaire de contact du site SAMPRO Consulting.`;
 
         // Message de confirmation
         const msg = currentLang === 'fr' ?
-            '✅ Votre message a été préparé. Vous allez être redirigé vers WhatsApp pour l\'envoyer.' :
-            '✅ Your message has been prepared. You will be redirected to WhatsApp to send it.';
+            ' Votre message a été préparé. Vous allez être redirigé vers WhatsApp pour l\'envoyer.' :
+            ' Your message has been prepared. You will be redirected to WhatsApp to send it.';
         alert(msg);
     });
 }
