@@ -1,1389 +1,715 @@
-// Mobile Navigation Toggle
-const mobileToggle = document.getElementById('mobileToggle');
-const mainNav = document.getElementById('mainNav');
+// ============================================
+// SCRIPT COMPLET — SAMPRO Consulting
+// ============================================
 
-if (mobileToggle && mainNav) {
-    mobileToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        const icon = mobileToggle.querySelector('i');
-        if (icon) {
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        }
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mainNav a').forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('active');
-            const icon = mobileToggle.querySelector('i');
-            if (icon) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+(function() {
+    'use strict';
+
+    // ============================================
+    // 1. SCROLL REVEAL
+    // ============================================
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    function checkReveals() {
+        const windowHeight = window.innerHeight;
+        reveals.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < windowHeight - 80) {
+                el.classList.add('visible');
             }
         });
+    }
+
+    window.addEventListener('scroll', checkReveals);
+    window.addEventListener('load', checkReveals);
+
+    // ============================================
+    // 2. HEADER SCROLL
+    // ============================================
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
-}
 
-// Department Tabs Functionality
-const tabBtns = document.querySelectorAll('.tab-btn[data-department]');
-const departmentContents = document.querySelectorAll('.department-content');
+    // ============================================
+    // 3. MOBILE MENU
+    // ============================================
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
 
-if (tabBtns.length && departmentContents.length) {
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all buttons and contents
-            tabBtns.forEach(b => b.classList.remove('active'));
-            departmentContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            // Show corresponding content
-            const departmentId = btn.getAttribute('data-department');
-            const departmentEl = document.getElementById(departmentId);
-            if (departmentEl) {
-                departmentEl.classList.add('active');
-                
-                // Smooth scroll to section on mobile
-                if (window.innerWidth <= 768) {
-                    setTimeout(() => {
-                        departmentEl.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }, 100);
+    function toggleMobile() {
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    }
+
+    if (mobileToggle) mobileToggle.addEventListener('click', toggleMobile);
+    if (mobileClose) mobileClose.addEventListener('click', toggleMobile);
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', toggleMobile);
+    });
+
+    // ============================================
+    // 4. THEME TOGGLE (Clair / Sombre)
+    // ============================================
+    const themeToggle = document.getElementById('themeToggle');
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (themeToggle) {
+            themeToggle.textContent = theme === 'dark' ? '☀' : '☽';
+        }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // ============================================
+    // 5. LANGUE TOGGLE (FR / EN)
+    // ============================================
+    const langToggle = document.getElementById('langToggle');
+    const langLabel = document.getElementById('langLabel');
+    const mobileLangBtn = document.getElementById('mobileLangBtn');
+
+    const translations = {
+        fr: {
+            home: 'Accueil',
+            about: 'À propos',
+            services: 'Services',
+            testimonials: 'Témoignages',
+            contact: 'Contact',
+            heroDesc: 'SAMPRO Consulting est un cabinet de formation, de conseil et de solutions digitales, spécialisé dans la formation linguistique, le développement des compétences, la communication, le digital et l\'accompagnement stratégique des particuliers, entreprises et institutions.',
+            ctaServices: 'Découvrir nos services',
+            ctaContact: 'Nous contacter',
+            slogan: 'Parler avec assurance, inspirer avec passion, impacter avec conviction',
+            aboutTag: 'Qui sommes-nous ?',
+            aboutSub: 'Découvrez l\'essence de SAMPRO Consulting à travers notre mission, nos valeurs et notre engagement.',
+            aboutP1: 'SAMPRO Consulting est une structure basée à Lomé, engagée dans le développement des compétences linguistiques, communicationnelles, professionnelles et digitales, avec une approche humaine, pratique et orientée résultats.',
+            aboutP2: 'Nous croyons que la maîtrise de la communication, des langues et des outils modernes est aujourd\'hui un levier essentiel de réussite personnelle et professionnelle.',
+            missionTitle: 'Notre mission',
+            missionText: 'Accompagner les individus et les organisations à mieux communiquer, mieux se former et mieux se structurer, grâce à des solutions adaptées, accessibles et durables.',
+            visionTitle: 'Notre vision',
+            visionText: 'Devenir une référence en formation linguistique, informatique, développement des compétences et transformation digitale au Togo et en Afrique.',
+            val1: 'Excellence & Professionnalisme',
+            val1desc: 'Nous visons l\'excellence dans chaque projet avec rigueur et dévouement.',
+            val2: 'Pédagogie & Impact',
+            val2desc: 'Des méthodes modernes pour des résultats concrets et durables.',
+            val3: 'Innovation & Adaptation',
+            val3desc: 'Toujours à la pointe des nouvelles technologies et des méthodes.',
+            val4: 'Proximité & Écoute',
+            val4desc: 'Un accompagnement personnalisé et humain au cœur de notre approche.',
+            val5: 'Discipline & Vision',
+            val5desc: 'Une approche structurée pour des résultats pérennes.',
+            founderQuote: 'Chaque projet est une opportunité d\'impact, et chaque apprenant mérite les outils pour construire son avenir avec confiance.',
+            founderName: 'DEGBEDJI Koffi Samuel, Fondateur & CEO',
+            galleryTag: 'Notre univers',
+            gallerySub: 'Découvrez l\'univers de SAMPRO Consulting à travers nos formations, séminaires et réalisations.',
+            valuesTag: 'Nos piliers',
+            servicesTag: 'Notre expertise',
+            servicesSub: 'Une gamme complète de services pour répondre à tous vos besoins en formation et développement.',
+            dept1: 'Formation Linguistique',
+            dept1desc: 'Anglais, français, chinois — cours généraux, professionnels et coaching personnalisé.',
+            dept2: 'Développement des Compétences',
+            dept2desc: 'Séminaires, leadership, prise de parole, orientation scolaire et coaching.',
+            dept3: 'Marketing Digital & Stratégie',
+            dept3desc: 'Stratégies de visibilité, création de contenu, gestion de pages professionnelles.',
+            dept4: 'Informatique & Solutions Digitales',
+            dept4desc: 'Création de sites web, maintenance, formation aux outils numériques.',
+            dept5: 'Communication Visuelle & Design',
+            dept5desc: 'Logos, affiches, flyers, bannières, identité visuelle et direction artistique.',
+            dept6: 'Impression & Production',
+            dept6desc: 'Supports de communication, tableaux photo, encadrements et impression.',
+            dept7: 'Conseil, Innovation & Projets Spéciaux',
+            dept7desc: 'Accompagnement stratégique, projets éducatifs et sociaux.',
+            deptTag: 'Nos départements',
+            priority: 'Pôle prioritaire',
+            dept1desc2: 'Anglais, français, chinois — traduction et interprétation.',
+            dept2desc2: 'Séminaires, leadership, coaching, orientation.',
+            dept3desc2: 'Visibilité, contenu, réseaux sociaux.',
+            dept4desc2: 'Sites web, maintenance, formation.',
+            dept5desc2: 'Logos, affiches, identité visuelle.',
+            dept6desc2: 'Supports événementiels, encadrements.',
+            dept2tag: 'Développement',
+            dept3tag: 'Stratégie',
+            dept4tag: 'Technologie',
+            dept5tag: 'Créatif',
+            dept6tag: 'Production',
+            dept7tag: 'Innovation',
+            ctaTitle: 'Prêt à transformer votre vision ?',
+            ctaDesc: 'Nos experts sont à votre écoute pour concrétiser vos projets.',
+            ctaBtn: 'Discuter de mon projet',
+            directorTag: 'Leadership',
+            directorSub: 'Découvrez le parcours et la vision du fondateur qui guide notre excellence.',
+            testTag: 'Témoignages',
+            testSub: 'Des retours authentiques de personnes qui ont fait confiance à SAMPRO Consulting.',
+            test1: '"La formation en anglais business m\'a permis de négocier des contrats internationaux avec confiance. L\'approche personnalisée a fait toute la différence."',
+            test1role: 'Directeur, Logistique',
+            test2: '"Le site web créé par SAMPRO Consulting a boosté nos ventes de 200% en seulement 3 mois. Une équipe professionnelle et à l\'écoute."',
+            test2role: 'Fondatrice, E-commerce',
+            test3: '"Une expérience d\'apprentissage exceptionnelle. Les professeurs sont compétents et toujours disponibles. Je recommande vivement !"',
+            test3name: 'Étudiant en Master',
+            test3role: 'Université de Lomé',
+            contactTag: 'Contactez-nous',
+            contactSub: 'Une question ? Un projet ? Nous sommes là pour vous accompagner.',
+            addressLabel: 'Adresse',
+            address: 'Djidjolé, Lomé — Togo',
+            phoneLabel: 'Téléphone',
+            hoursLabel: 'Horaires',
+            hours: 'Lun - Ven : 8h00 - 20h00',
+            hoursSat: 'Sam : 9h00 - 14h00 (sur rendez-vous)',
+            followUs: 'Suivez-nous',
+            formTitle: 'Envoyez-nous un message',
+            formDesc: 'Remplissez ce formulaire et nous vous répondrons sous 24h.',
+            nameLabel: 'Nom complet',
+            subjectLabel: 'Sujet',
+            selectSubject: 'Sélectionnez un sujet',
+            subject1: 'Formation linguistique',
+            subject2: 'Solutions digitales',
+            subject3: 'Marketing digital',
+            subject4: 'Design graphique',
+            subject5: 'Conseil stratégique',
+            subject6: 'Autre demande',
+            messageLabel: 'Message',
+            sendBtn: 'Envoyer le message',
+            newsletter: 'Je souhaite recevoir la newsletter',
+            formNote: 'Vos données sont protégées et ne seront jamais partagées.',
+            ctaBonusTitle: 'Besoin d\'une consultation gratuite ?',
+            ctaBonusDesc: 'Réservez un appel de 30 minutes pour discuter de vos besoins spécifiques.',
+            ctaBonusBtn: 'Réserver maintenant',
+            footerDesc: 'Leader du conseil et de la formation à Lomé. Nous accompagnons les professionnels et les étudiants dans la maîtrise des langues et des outils digitaux.',
+            navTitle: 'Navigation',
+            formationsTitle: 'Formations',
+            formation1: 'Anglais Business',
+            formation2: 'Marketing Digital',
+            formation3: 'Développement Web',
+            formation4: 'Leadership & Management',
+            formation5: 'Préparation TOEFL / IELTS',
+            contactTitle: 'Contact',
+            rights: 'Tous droits réservés',
+            legal1: 'Mentions légales',
+            legal2: 'Politique de confidentialité'
+        },
+        en: {
+            home: 'Home',
+            about: 'About',
+            services: 'Services',
+            testimonials: 'Testimonials',
+            contact: 'Contact',
+            heroDesc: 'SAMPRO Consulting is a training, consulting and digital solutions firm, specializing in language training, skills development, communication, digital and strategic support for individuals, businesses and institutions.',
+            ctaServices: 'Discover our services',
+            ctaContact: 'Contact us',
+            slogan: 'Speak with confidence, inspire with passion, impact with conviction',
+            aboutTag: 'Who are we?',
+            aboutSub: 'Discover the essence of SAMPRO Consulting through our mission, values and commitment.',
+            aboutP1: 'SAMPRO Consulting is a structure based in Lomé, committed to the development of language, communication, professional and digital skills, with a human, practical and results-oriented approach.',
+            aboutP2: 'We believe that mastering communication, languages and modern tools is now an essential lever for personal and professional success.',
+            missionTitle: 'Our mission',
+            missionText: 'To support individuals and organizations to communicate better, train better and structure better, through adapted, accessible and sustainable solutions.',
+            visionTitle: 'Our vision',
+            visionText: 'To become a reference in language training, IT, skills development and digital transformation in Togo and Africa.',
+            val1: 'Excellence & Professionalism',
+            val1desc: 'We aim for excellence in every project with rigor and dedication.',
+            val2: 'Pedagogy & Impact',
+            val2desc: 'Modern methods for concrete and lasting results.',
+            val3: 'Innovation & Adaptation',
+            val3desc: 'Always at the forefront of new technologies and methods.',
+            val4: 'Proximity & Listening',
+            val4desc: 'Personalized and human support at the heart of our approach.',
+            val5: 'Discipline & Vision',
+            val5desc: 'A structured approach for sustainable results.',
+            founderQuote: 'Every project is an opportunity for impact, and every learner deserves the tools to build their future with confidence.',
+            founderName: 'DEGBEDJI Koffi Samuel, Founder & CEO',
+            galleryTag: 'Our universe',
+            gallerySub: 'Discover the world of SAMPRO Consulting through our training, seminars and achievements.',
+            valuesTag: 'Our pillars',
+            servicesTag: 'Our expertise',
+            servicesSub: 'A complete range of services to meet all your training and development needs.',
+            dept1: 'Language Training',
+            dept1desc: 'English, French, Chinese — general, professional and coaching courses.',
+            dept2: 'Skills Development',
+            dept2desc: 'Seminars, leadership, public speaking, academic guidance and coaching.',
+            dept3: 'Digital Marketing & Strategy',
+            dept3desc: 'Visibility strategies, content creation, professional page management.',
+            dept4: 'IT & Digital Solutions',
+            dept4desc: 'Website creation, maintenance, training in digital tools.',
+            dept5: 'Visual Communication & Design',
+            dept5desc: 'Logos, posters, flyers, banners, visual identity and artistic direction.',
+            dept6: 'Printing & Production',
+            dept6desc: 'Communication supports, photo boards, framing and printing.',
+            dept7: 'Consulting, Innovation & Special Projects',
+            dept7desc: 'Strategic support, educational and social projects.',
+            deptTag: 'Our departments',
+            priority: 'Priority',
+            dept1desc2: 'English, French, Chinese — translation and interpretation.',
+            dept2desc2: 'Seminars, leadership, coaching, guidance.',
+            dept3desc2: 'Visibility, content, social networks.',
+            dept4desc2: 'Websites, maintenance, training.',
+            dept5desc2: 'Logos, posters, visual identity.',
+            dept6desc2: 'Event supports, framing.',
+            dept2tag: 'Development',
+            dept3tag: 'Strategy',
+            dept4tag: 'Technology',
+            dept5tag: 'Creative',
+            dept6tag: 'Production',
+            dept7tag: 'Innovation',
+            ctaTitle: 'Ready to transform your vision?',
+            ctaDesc: 'Our experts are ready to support you in achieving your goals.',
+            ctaBtn: 'Discuss my project',
+            directorTag: 'Leadership',
+            directorSub: 'Discover the journey and vision of the founder who guides our excellence.',
+            testTag: 'Testimonials',
+            testSub: 'Authentic feedback from people who have trusted SAMPRO Consulting for their development.',
+            test1: '"The business English training allowed me to negotiate international contracts with confidence. The personalized approach made all the difference."',
+            test1role: 'Director, Logistics',
+            test2: '"The website created by SAMPRO Consulting boosted our sales by 200% in just 3 months. A professional and attentive team."',
+            test2role: 'Founder, E-commerce',
+            test3: '"An exceptional learning experience. The teachers are competent and always available. I highly recommend!"',
+            test3name: 'Master\'s Student',
+            test3role: 'University of Lomé',
+            contactTag: 'Contact us',
+            contactSub: 'A question? A project? We are here to support you.',
+            addressLabel: 'Address',
+            address: 'Djidjolé, Lomé — Togo',
+            phoneLabel: 'Phone',
+            hoursLabel: 'Hours',
+            hours: 'Mon - Fri : 8:00 AM - 8:00 PM',
+            hoursSat: 'Sat : 9:00 AM - 2:00 PM (by appointment)',
+            followUs: 'Follow us',
+            formTitle: 'Send us a message',
+            formDesc: 'Fill out this form and we will get back to you within 24 hours.',
+            nameLabel: 'Full name',
+            subjectLabel: 'Subject',
+            selectSubject: 'Select a subject',
+            subject1: 'Language training',
+            subject2: 'Digital solutions',
+            subject3: 'Digital marketing',
+            subject4: 'Graphic design',
+            subject5: 'Strategic consulting',
+            subject6: 'Other request',
+            messageLabel: 'Message',
+            sendBtn: 'Send message',
+            newsletter: 'I wish to receive the newsletter',
+            formNote: 'Your data is protected and will never be shared.',
+            ctaBonusTitle: 'Need a free consultation?',
+            ctaBonusDesc: 'Book a 30-minute call to discuss your specific needs.',
+            ctaBonusBtn: 'Book now',
+            footerDesc: 'Leader in consulting and training in Lomé. We support professionals and students in mastering languages and digital tools.',
+            navTitle: 'Navigation',
+            formationsTitle: 'Trainings',
+            formation1: 'Business English',
+            formation2: 'Digital Marketing',
+            formation3: 'Web Development',
+            formation4: 'Leadership & Management',
+            formation5: 'TOEFL / IELTS Preparation',
+            contactTitle: 'Contact',
+            rights: 'All rights reserved',
+            legal1: 'Legal notices',
+            legal2: 'Privacy policy'
+        }
+    };
+
+    let currentLang = 'fr';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        langLabel.textContent = lang.toUpperCase();
+        if (mobileLangBtn) {
+            mobileLangBtn.textContent = lang.toUpperCase() + ' / ' + (lang === 'fr' ? 'EN' : 'FR');
+        }
+
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang][key] !== undefined) {
+                if (el.tagName === 'OPTION') {
+                    el.textContent = translations[lang][key];
+                } else if (el.tagName !== 'INPUT' && el.tagName !== 'TEXTAREA' && el.tagName !== 'SELECT') {
+                    el.textContent = translations[lang][key];
                 }
             }
         });
-    });
-}
+    }
 
-// Card Links for Service Overview
-document.querySelectorAll('.card-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const departmentId = link.getAttribute('data-department');
-        if (departmentId) {
-            const targetBtn = document.querySelector(`.tab-btn[data-department="${departmentId}"]`);
-            if (targetBtn) {
-                targetBtn.click();
+    if (langToggle) {
+        langToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            setLanguage(currentLang === 'fr' ? 'en' : 'fr');
+        });
+    }
+
+    if (mobileLangBtn) {
+        mobileLangBtn.addEventListener('click', function() {
+            setLanguage(currentLang === 'fr' ? 'en' : 'fr');
+        });
+    }
+
+    // ============================================
+    // 6. TESTIMONIALS CAROUSEL — AUTOMATIC
+    // ============================================
+    (function() {
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dots .dot');
+        let currentIndex = 0;
+        let intervalId = null;
+        let isTransitioning = false;
+        const DELAY = 3000;
+
+        if (slides.length === 0) return;
+
+        function showSlide(index) {
+            if (isTransitioning) return;
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            if (index === currentIndex) return;
+
+            isTransitioning = true;
+
+            slides[currentIndex].classList.remove('active');
+            slides[currentIndex].classList.add('exit');
+
+            const newSlide = slides[index];
+            newSlide.classList.remove('exit');
+            newSlide.classList.add('active');
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            currentIndex = index;
+
+            setTimeout(() => {
+                slides.forEach(s => s.classList.remove('exit'));
+                isTransitioning = false;
+            }, 700);
+        }
+
+        function nextSlide() {
+            if (!isTransitioning) {
+                showSlide((currentIndex + 1) % slides.length);
             }
         }
-    });
-});
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            e.preventDefault();
-            const offset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
+        function startAutoplay() {
+            stopAutoplay();
+            intervalId = setInterval(nextSlide, DELAY);
+        }
+
+        function stopAutoplay() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        function resetAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                if (index !== currentIndex) {
+                    showSlide(index);
+                    resetAutoplay();
+                }
             });
-        }
-    });
-});
+        });
 
-// Header background on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (header) {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        const carousel = document.querySelector('.testimonial-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
         }
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+
+        showSlide(0);
+        startAutoplay();
+
+        console.log('🔄 Carrousel témoignages activé — changement toutes les 3 secondes');
+    })();
+
+    // ============================================
+    // 7. MODALS — OUVERTURE / FERMETURE
+    // ============================================
+    (function() {
+        const deptItems = document.querySelectorAll('.dept-item');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function closeAllModals() {
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+
+        deptItems.forEach((item) => {
+            const modalId = item.getAttribute('data-modal');
+            if (modalId) {
+                item.addEventListener('click', function(e) {
+                    if (e.target.closest('a')) return;
+                    openModal(modalId);
+                });
+            }
+        });
+
+        modalCloses.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const modalId = this.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                if (modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAllModals();
+            }
+        });
+
+        document.querySelectorAll('.modal-content').forEach(content => {
+            content.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        console.log('📦 Système de modales activé');
+    })();
+
+    // ============================================
+    // 8. SERVICE DETAIL — OUVERTURE / FERMETURE
+    // ============================================
+    (function() {
+        const discoverLinks = document.querySelectorAll('.service-card .link, .dept-item .link');
+        const serviceDetails = document.querySelectorAll('.service-detail');
+        const servicesSection = document.querySelector('.section-services');
+
+        function openServiceDetail(serviceId) {
+            serviceDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+
+            const target = document.getElementById(serviceId);
+            if (target) {
+                target.classList.add('active');
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        window.closeServiceDetail = function() {
+            serviceDetails.forEach(detail => {
+                detail.classList.remove('active');
+            });
+
+            if (servicesSection) {
+                servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        discoverLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const serviceId = this.getAttribute('data-service');
+                if (serviceId) {
+                    openServiceDetail(serviceId);
+                } else {
+                    const card = this.closest('.service-card');
+                    if (card) {
+                        const index = Array.from(document.querySelectorAll('.service-card')).indexOf(card) + 1;
+                        openServiceDetail('service-detail-' + index);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            const link = card.querySelector('.link');
+            if (link && !link.hasAttribute('data-service')) {
+                link.setAttribute('data-service', 'service-detail-' + (index + 1));
+            }
+        });
+
+        document.querySelectorAll('.dept-item').forEach((item, index) => {
+            const link = item.querySelector('.link');
+            if (link && !link.hasAttribute('data-service')) {
+                link.setAttribute('data-service', 'service-detail-' + (index + 1));
+            }
+        });
+
+        console.log('📄 Système de pages détaillées activé');
+    })();
+
+    // ============================================
+    // 9. CONTACT FORM
+    // ============================================
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = currentLang === 'fr' ?
+                '✅ Merci ! Votre message a été envoyé. Nous vous répondrons sous 24h.' :
+                '✅ Thank you! Your message has been sent. We will get back to you within 24 hours.';
+            alert(msg);
+            this.reset();
+        });
     }
-});
 
-// Form submission
+    // ============================================
+    // 10. SMOOTH SCROLL
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                const offset = 80;
+                const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: pos, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ============================================
+    // 11. ACTIVE NAV LINK ON SCROLL
+    // ============================================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', function() {
+        let current = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    console.log('🚀 SAMPRO Consulting — Version Professionnelle chargée !');
+
+})();
+
+
+// envoie du formulaire dans whatsdapp
+
+// ============================================
+// FORMULAIRE — ENVOI VERS WHATSAPP
+// ============================================
 const contactForm = document.getElementById('contactForm');
+
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form values
-        const nameInput = this.querySelector('input[type="text"]');
-        const emailInput = this.querySelector('input[type="email"]');
-        const messageTextarea = this.querySelector('textarea');
-        
-        const name = nameInput ? nameInput.value : '';
-        const email = emailInput ? emailInput.value : '';
-        const message = messageTextarea ? messageTextarea.value : '';
-        
-        if (name && email && message) {
-            // Show success message
-            alert(`Merci ${name}! Votre message a été envoyé. Nous vous répondrons bientôt à ${email}.`);
-            
-            // Reset form
-            this.reset();
-        } else {
-            alert('Veuillez remplir tous les champs obligatoires.');
-        }
+
+        // Récupérer les valeurs des champs
+        const nom = this.querySelector('input[type="text"]')?.value || '';
+        const telephone = this.querySelector('input[type="tel"]')?.value || '';
+        const email = this.querySelector('input[type="email"]')?.value || '';
+        const sujet = this.querySelector('select')?.value || 'Non précisé';
+        const message = this.querySelector('textarea')?.value || '';
+        const newsletter = this.querySelector('#newsletter')?.checked ? 'Oui' : 'Non';
+
+        // Construire le message WhatsApp
+        const texte = `📩 *NOUVEAU MESSAGE DEPUIS LE SITE SAMPRO CONSULTING*
+
+👤 *Nom complet :* ${nom}
+📞 *Téléphone :* ${telephone}
+📧 *Email :* ${email}
+📌 *Sujet :* ${sujet}
+📬 *Newsletter :* ${newsletter}
+
+💬 *Message :*
+${message}
+
+---
+Envoyé depuis le formulaire de contact du site SAMPRO Consulting.`;
+
+        // Encoder le message pour l'URL
+        const messageEncoded = encodeURIComponent(texte);
+
+        // Numéro WhatsApp (remplace par le bon numéro)
+        const numeroWhatsApp = '22892557424';
+
+        // URL WhatsApp
+        const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${messageEncoded}`;
+
+        // Ouvrir WhatsApp dans un nouvel onglet
+        window.open(urlWhatsApp, '_blank');
+
+        // Réinitialiser le formulaire
+        this.reset();
+
+        // Message de confirmation
+        const msg = currentLang === 'fr' ?
+            '✅ Votre message a été préparé. Vous allez être redirigé vers WhatsApp pour l\'envoyer.' :
+            '✅ Your message has been prepared. You will be redirected to WhatsApp to send it.';
+        alert(msg);
     });
 }
-
-// Carousel functionality
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
-
-if (track && prevBtn && nextBtn) {
-    let currentPosition = 0;
-    let cardWidth = 0;
-    
-    function updateCarousel() {
-        const cards = document.querySelectorAll('.testimonial-card');
-        if (cards.length === 0) return;
-        
-        cardWidth = cards[0].offsetWidth + 32; // width + gap
-        const maxPosition = Math.max(0, (cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth)) * cardWidth);
-        
-        currentPosition = Math.max(-maxPosition, Math.min(0, currentPosition));
-        track.style.transform = `translateX(${currentPosition}px)`;
-    }
-    
-    prevBtn.addEventListener('click', () => {
-        currentPosition = Math.min(currentPosition + cardWidth, 0);
-        updateCarousel();
-    });
-    
-    nextBtn.addEventListener('click', () => {
-        const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-        currentPosition = Math.max(currentPosition - cardWidth, -maxScroll);
-        updateCarousel();
-    });
-    
-    window.addEventListener('resize', () => {
-        updateCarousel();
-    });
-    
-    updateCarousel();
-}
-
-// Gallery overlay click handler
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const img = item.querySelector('img');
-        if (img) {
-            // Open image in modal (you can implement a proper modal here)
-            window.open(img.src, '_blank');
-        }
-    });
-});
-
-// Portfolio overlay click handler
-document.querySelectorAll('.portfolio-overlay').forEach(overlay => {
-    overlay.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const portfolioItem = overlay.closest('.portfolio-item');
-        if (portfolioItem) {
-            // Open project details (you can implement a modal here)
-            console.log('Open project details');
-        }
-    });
-});
-
-// Add animation on scroll (simple reveal)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.value-card, .service-overview-card, .portfolio-item, .testimonial-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
-// Play overlay functionality
-const playOverlay = document.querySelector('.play-overlay');
-const heroVideo = document.querySelector('.hero-video');
-
-if (playOverlay && heroVideo) {
-    playOverlay.addEventListener('click', () => {
-        if (heroVideo.paused) {
-            heroVideo.play();
-            playOverlay.style.opacity = '0';
-        } else {
-            heroVideo.pause();
-            playOverlay.style.opacity = '1';
-        }
-    });
-    
-    heroVideo.addEventListener('click', () => {
-        if (heroVideo.paused) {
-            heroVideo.play();
-            playOverlay.style.opacity = '0';
-        } else {
-            heroVideo.pause();
-            playOverlay.style.opacity = '1';
-        }
-    });
-}
-
-// Add active class to nav links on scroll
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollPosition = window.scrollY + 100;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href');
-        if (href === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Initialize tooltips (simple version)
-document.querySelectorAll('[title]').forEach(el => {
-    el.setAttribute('data-title', el.getAttribute('title'));
-});
-
-console.log('SAMPRO Consulting website loaded successfully!');
-
-
-
-
-
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-// Set initial theme
-if (savedTheme) {
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-} else if (prefersDark) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    updateThemeIcon('dark');
-} else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    updateThemeIcon('light');
-}
-
-// Theme toggle click handler
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        // Apply new theme
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Update icon
-        updateThemeIcon(newTheme);
-        
-        // Add animation effect
-        themeToggle.style.transform = 'rotate(360deg)';
-        setTimeout(() => {
-            if (themeToggle) {
-                themeToggle.style.transform = '';
-            }
-        }, 300);
-    });
-}
-
-function updateThemeIcon(theme) {
-    if (themeIcon) {
-        if (theme === 'dark') {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-        }
-    }
-}
-
-// Optional: Add smooth transition for theme change
-const style = document.createElement('style');
-style.textContent = `
-    * {
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-`;
-document.head.appendChild(style);
-
-// Optional: Add theme change animation for key elements
-function animateThemeChange() {
-    const elements = document.querySelectorAll('.value-card, .service-overview-card, .portfolio-item, .testimonial-card');
-    elements.forEach((el, index) => {
-        setTimeout(() => {
-            el.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                el.style.transform = '';
-            }, 150);
-        }, index * 50);
-    });
-}
-
-// Listen for theme changes
-const observerTheme = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'data-theme') {
-            animateThemeChange();
-        }
-    });
-});
-
-observerTheme.observe(document.documentElement, {
-    attributes: true
-});
-
-// Optional: Add keyboard shortcut (Ctrl/Cmd + Shift + D) for theme toggle
-document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'D') {
-        e.preventDefault();
-        if (themeToggle) {
-            themeToggle.click();
-        }
-    }
-});
-
-// Optional: Add console message for theme
-console.log('Theme system initialized. Use Ctrl/Cmd + Shift + D to toggle theme');
-
-
-
-
-
-// Video Background Loading and Management
-const videoBackground = document.querySelector('.hero-video-background');
-const bgVideo = document.querySelector('.bg-video');
-
-if (bgVideo) {
-    // Add loading state
-    if (videoBackground) {
-        videoBackground.classList.add('video-loading');
-    }
-    
-    // Handle video loaded
-    bgVideo.addEventListener('loadeddata', () => {
-        if (videoBackground) {
-            videoBackground.classList.remove('video-loading');
-        }
-        console.log('Background video loaded successfully');
-    });
-    
-    // Handle video error
-    bgVideo.addEventListener('error', (e) => {
-        console.error('Background video failed to load:', e);
-        if (videoBackground) {
-            videoBackground.classList.remove('video-loading');
-            // Fallback to gradient background
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.background = 'linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%)';
-            }
-        }
-    });
-    
-    // Handle video play issues (autoplay policies)
-    const playPromise = bgVideo.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.log('Autoplay was prevented:', error);
-            // Show a play button overlay
-            const hero = document.querySelector('.hero');
-            if (hero && !document.querySelector('.video-play-prompt')) {
-                const playPrompt = document.createElement('div');
-                playPrompt.className = 'video-play-prompt';
-                playPrompt.innerHTML = `
-                    <button class="play-video-btn">
-                        <i class="fas fa-play"></i>
-                        Activer la vidéo
-                    </button>
-                `;
-                playPrompt.style.position = 'absolute';
-                playPrompt.style.top = '50%';
-                playPrompt.style.left = '50%';
-                playPrompt.style.transform = 'translate(-50%, -50%)';
-                playPrompt.style.zIndex = '10';
-                playPrompt.style.background = 'rgba(0,0,0,0.7)';
-                playPrompt.style.padding = '1rem 2rem';
-                playPrompt.style.borderRadius = '3rem';
-                playPrompt.style.cursor = 'pointer';
-                playPrompt.style.border = '2px solid var(--secondary)';
-                
-                const btn = playPrompt.querySelector('.play-video-btn');
-                if (btn) {
-                    btn.style.background = 'none';
-                    btn.style.border = 'none';
-                    btn.style.color = 'white';
-                    btn.style.fontSize = '1rem';
-                    btn.style.cursor = 'pointer';
-                    btn.style.display = 'flex';
-                    btn.style.alignItems = 'center';
-                    btn.style.gap = '0.5rem';
-                    
-                    btn.addEventListener('click', () => {
-                        bgVideo.play();
-                        playPrompt.remove();
-                    });
-                }
-                
-                hero?.appendChild(playPrompt);
-            }
-        });
-    }
-}
-
-// Optional: Pause video when not in viewport to save resources
-const heroSection = document.querySelector('.hero');
-
-if (heroSection && bgVideo) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                bgVideo.play().catch(e => console.log('Video play prevented:', e));
-            } else {
-                bgVideo.pause();
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    observer.observe(heroSection);
-}
-
-// Optional: Add smooth scroll parallax effect
-let lastScrollY = 0;
-if (bgVideo) {
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const diff = scrollY - lastScrollY;
-        const currentTransform = bgVideo.style.transform || 'translateX(-50%) translateY(-50%) scale(1)';
-        
-        if (scrollY < window.innerHeight) {
-            const scale = 1 + (scrollY * 0.0005);
-            bgVideo.style.transform = `translateX(-50%) translateY(-50%) scale(${scale})`;
-        }
-        
-        lastScrollY = scrollY;
-    });
-}
-
-
-
-// YouTube Background Integration
-let youtubePlayer = null;
-let youtubeInterval = null;
-
-function initYouTubeBackground(videoId, options = {}) {
-    const youtubeContainer = document.getElementById('youtubeBg');
-    if (!youtubeContainer) return;
-    
-    // Options par défaut
-    const defaultOptions = {
-        autoplay: 1,
-        mute: 1,
-        loop: 1,
-        controls: 0,
-        modestbranding: 1,
-        showinfo: 0,
-        rel: 0,
-        playsinline: 1
-    };
-    
-    const finalOptions = { ...defaultOptions, ...options };
-    
-    if (finalOptions.loop && !finalOptions.list && !finalOptions.playlist) {
-        finalOptions.playlist = videoId;
-    }
-    
-    // Construire l'URL de l'iframe
-    let params = [];
-    for (let [key, value] of Object.entries(finalOptions)) {
-        params.push(`${key}=${value}`);
-    }
-    const embedUrl = `https://www.youtube.com/embed/${videoId}?${params.join('&')}`;
-    
-    // Créer l'iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = embedUrl;
-    iframe.frameBorder = "0";
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    iframe.allowFullscreen = true;
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.position = "absolute";
-    iframe.style.top = "50%";
-    iframe.style.left = "50%";
-    iframe.style.transform = "translate(-50%, -50%)";
-    iframe.style.minWidth = "100%";
-    iframe.style.minHeight = "100%";
-    
-    // Ajouter un conteneur pour l'iframe
-    const container = document.createElement('div');
-    container.className = 'youtube-container';
-    container.appendChild(iframe);
-    
-    youtubeContainer.innerHTML = '';
-    youtubeContainer.appendChild(container);
-    
-    // Gérer le chargement
-    iframe.addEventListener('load', () => {
-        console.log('YouTube background loaded');
-        if (youtubeContainer.parentElement) {
-            youtubeContainer.parentElement.classList.remove('video-loading');
-        }
-    });
-    
-    // Pour le loop sur YouTube, on doit parfois recharger
-    if (finalOptions.loop) {
-        let loopCount = 0;
-        const checkLoop = setInterval(() => {
-            if (iframe.contentWindow) {
-                // Envoyer un message pour vérifier l'état (optionnel)
-                loopCount++;
-                if (loopCount > 100) clearInterval(checkLoop);
-            }
-        }, 1000);
-    }
-}
-
-// Fonction pour extraire l'ID YouTube d'une URL
-function getYouTubeId(url) {
-    const patterns = [
-        /(?:youtube\.com\/watch\?v=)([^&]+)/,
-        /(?:youtu\.be\/)([^?]+)/,
-        /(?:youtube\.com\/embed\/)([^?]+)/,
-        /(?:youtube\.com\/v\/)([^?]+)/
-    ];
-    
-    for (let pattern of patterns) {
-        const match = url.match(pattern);
-        if (match) return match[1];
-    }
-    return null;
-}
-
-// Initialiser avec votre vidéo YouTube
-// Remplacez 'VIDEO_ID' par l'ID de votre vidéo YouTube
-// Par exemple: 'tuPHm37D0h0'
-// const YOUTUBE_VIDEO_ID = 'tuPHm37D0h0';
-// const YOUTUBE_PLAYLIST_ID = 'PLdGJJ6BBahVodCt3Cet2bDmDSiRVJoE5G';
-
-// // URL complète: https://www.youtube.com/embed/tuPHm37D0h0?list=PLdGJJ6BBahVodCt3Cet2bDmDSiRVJoE5G
-
-// // Démarrer la vidéo YouTube
-// if (document.getElementById('youtubeBg')) {
-//     // Ajouter un indicateur de chargement
-//     const videoBg = document.querySelector('.hero-video-background');
-//     if (videoBg) videoBg.classList.add('video-loading');
-    
-//     // Initialiser avec l'ID YouTube
-//     initYouTubeBackground(YOUTUBE_VIDEO_ID, {
-//         autoplay: 1,
-//         mute: 1,
-//         loop: 1,
-//         controls: 0,
-//         modestbranding: 1,
-//         showinfo: 0,
-//         rel: 0,
-//         playsinline: 1,
-//         list: YOUTUBE_PLAYLIST_ID
-//     });
-// }
-
-
-
-// Director section animation on scroll
-const directorObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const directorItems = entry.target.querySelectorAll('.timeline-item, .achievement-item, .director-badges .badge');
-            directorItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        }
-    });
-}, { threshold: 0.1 });
-
-const directorSection = document.querySelector('.section-director');
-if (directorSection) {
-    // Set initial state for timeline items
-    directorSection.querySelectorAll('.timeline-item, .achievement-item, .director-badges .badge').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    });
-    
-    directorObserver.observe(directorSection);
-}
-
-
-
-// ============================================
-// ANIMATIONS PROFESSIONNELLES AU SCROLL
-// ============================================
-
-// Configuration de l'observateur d'intersection
-const animationOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-// Observateur principal pour les animations
-const animationObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            // Ajouter un délai pour un effet en cascade
-            const delay = entry.target.dataset.delay || 0;
-            setTimeout(() => {
-                // Ajouter la classe d'animation
-                entry.target.classList.add('animated');
-                // Déclencher l'animation spécifique
-                const animationType = entry.target.dataset.animation || 'fadeInUp';
-                entry.target.classList.add(animationType);
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translate(0, 0)';
-            }, parseInt(delay));
-        }
-    });
-}, animationOptions);
-
-// Fonction pour initialiser les animations
-function initAnimations() {
-    // Sélectionner tous les éléments à animer
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
-    animatedElements.forEach((el, index) => {
-        // Définir un délai progressif
-        if (!el.dataset.delay) {
-            el.dataset.delay = (index % 5) * 100;
-        }
-        
-        // Définir le type d'animation par défaut
-        if (!el.dataset.animation) {
-            const animations = ['fadeInUp', 'fadeInLeft', 'fadeInRight', 'fadeInDown'];
-            el.dataset.animation = animations[index % animations.length];
-        }
-        
-        // Observer l'élément
-        animationObserver.observe(el);
-    });
-}
-
-// ============================================
-// DÉFINITION DES ANIMATIONS CSS
-// ============================================
-
-// Ajouter les styles d'animation dynamiquement
-const animationStyles = document.createElement('style');
-animationStyles.textContent = `
-    /* Base - État initial des éléments animés */
-    .animate-on-scroll {
-        opacity: 0;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform, opacity;
-    }
-    
-    /* Animations disponibles */
-    .fadeInUp {
-        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .fadeInDown {
-        animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .fadeInLeft {
-        animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .fadeInRight {
-        animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .zoomIn {
-        animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .zoomOut {
-        animation: zoomOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .slideUp {
-        animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .slideDown {
-        animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .scaleIn {
-        animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    .rotateIn {
-        animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    /* Keyframes */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes fadeInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    @keyframes fadeInRight {
-        from {
-            opacity: 0;
-            transform: translateX(60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    @keyframes zoomIn {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    
-    @keyframes zoomOut {
-        from {
-            opacity: 0;
-            transform: scale(1.2);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(100px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-100px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-    
-    @keyframes scaleIn {
-        from {
-            opacity: 0;
-            transform: scale(0.7);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-    
-    @keyframes rotateIn {
-        from {
-            opacity: 0;
-            transform: rotate(-10deg) scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: rotate(0) scale(1);
-        }
-    }
-    
-    /* Effet de révélation de texte */
-    .text-reveal {
-        overflow: hidden;
-        display: inline-block;
-    }
-    
-    .text-reveal .word {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: wordReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    
-    @keyframes wordReveal {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Stagger effect pour les enfants */
-    .stagger-children > * {
-        opacity: 0;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .stagger-children.animated > * {
-        opacity: 1;
-    }
-    
-    .stagger-children.animated > *:nth-child(1) { transition-delay: 0.05s; }
-    .stagger-children.animated > *:nth-child(2) { transition-delay: 0.15s; }
-    .stagger-children.animated > *:nth-child(3) { transition-delay: 0.25s; }
-    .stagger-children.animated > *:nth-child(4) { transition-delay: 0.35s; }
-    .stagger-children.animated > *:nth-child(5) { transition-delay: 0.45s; }
-    .stagger-children.animated > *:nth-child(6) { transition-delay: 0.55s; }
-    .stagger-children.animated > *:nth-child(7) { transition-delay: 0.65s; }
-    .stagger-children.animated > *:nth-child(8) { transition-delay: 0.75s; }
-    
-    /* Effet de parallaxe léger */
-    .parallax {
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .parallax:hover {
-        transform: translateY(-5px);
-    }
-`;
-
-document.head.appendChild(animationStyles);
-
-// ============================================
-// INITIALISATION DES ANIMATIONS
-// ============================================
-
-// Attendre le chargement complet du DOM
-document.addEventListener('DOMContentLoaded', () => {
-    initAnimations();
-});
-
-// ============================================
-// ANIMATION DES TITRES ET TEXTES
-// ============================================
-
-function animateTexts() {
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, p, .section-tag');
-    textElements.forEach(el => {
-        if (!el.closest('.animate-on-scroll')) {
-            el.classList.add('animate-on-scroll');
-            // Texte en fondu pour les paragraphes
-            if (el.tagName === 'P') {
-                el.dataset.animation = 'fadeInUp';
-            }
-        }
-    });
-}
-
-// ============================================
-// ANIMATION DES CARTES ET ÉLÉMENTS VISUELS
-// ============================================
-
-function animateCards() {
-    const cardSelectors = [
-        '.value-card',
-        '.service-overview-card',
-        '.testimonial-card',
-        '.portfolio-item',
-        '.gallery-item',
-        '.stat-card',
-        '.digital-card',
-        '.design-item',
-        '.print-item',
-        '.conseil-card',
-        '.marketing-card',
-        '.achievement-item',
-        '.partner-item'
-    ];
-    
-    cardSelectors.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-            if (!el.classList.contains('animate-on-scroll')) {
-                el.classList.add('animate-on-scroll');
-                // Animation différente selon le type
-                if (selector === '.value-card' || selector === '.testimonial-card') {
-                    el.dataset.animation = 'scaleIn';
-                } else if (selector === '.gallery-item') {
-                    el.dataset.animation = 'zoomIn';
-                } else {
-                    el.dataset.animation = 'fadeInUp';
-                }
-            }
-        });
-    });
-}
-
-// ============================================
-// ANIMATION DES SECTIONS AVEC STAGGER
-// ============================================
-
-function initStaggerSections() {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        // Ajouter stagger aux enfants des sections
-        const children = section.querySelectorAll('.value-card, .service-overview-card, .testimonial-card, .portfolio-item, .gallery-item');
-        if (children.length > 1) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'stagger-children animate-on-scroll';
-            wrapper.dataset.animation = 'fadeInUp';
-            
-            // Remplacer le parent direct
-            const parent = children[0].parentElement;
-            if (parent && !parent.classList.contains('stagger-children')) {
-                // Créer un conteneur pour les enfants
-                const container = document.createElement('div');
-                container.className = 'stagger-container';
-                container.style.display = 'grid';
-                container.style.gridTemplateColumns = 'inherit';
-                container.style.gap = 'inherit';
-                
-                // Déplacer les enfants dans le conteneur
-                const items = [];
-                children.forEach(child => {
-                    items.push(child.cloneNode(true));
-                    child.remove();
-                });
-                items.forEach(item => container.appendChild(item));
-                parent.appendChild(container);
-                
-                // Appliquer stagger au conteneur
-                container.classList.add('stagger-children', 'animate-on-scroll');
-                container.dataset.animation = 'fadeInUp';
-                
-                // Ajouter les classes d'animation aux éléments
-                container.querySelectorAll('*').forEach((el, index) => {
-                    el.style.transitionDelay = `${(index * 0.1)}s`;
-                    el.classList.add('animate-on-scroll');
-                    el.dataset.animation = 'fadeInUp';
-                    el.dataset.delay = (index * 100);
-                });
-            }
-        }
-    });
-}
-
-// ============================================
-// ANIMATION DE RÉVÉLATION DE TEXTE (MODIFIÉE)
-// ============================================
-
-function initTextReveal() {
-    const headings = document.querySelectorAll('h1, h2, h3, .section-tag');
-    headings.forEach(heading => {
-        // EXCLURE les titres de la hero section
-        if (heading.closest('.hero')) {
-            return; // Ne pas appliquer l'animation de révélation sur la hero
-        }
-        
-        if (!heading.classList.contains('text-reveal')) {
-            heading.classList.add('text-reveal');
-            
-            // Diviser le texte en mots
-            const words = heading.textContent.split(' ');
-            heading.innerHTML = words.map((word, index) => {
-                return `<span class="word" style="animation-delay: ${index * 0.08}s">${word}</span>`;
-            }).join(' ');
-            
-            heading.style.overflow = 'hidden';
-            
-            // Observer pour déclencher l'animation
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        heading.querySelectorAll('.word').forEach(word => {
-                            word.style.animation = 'wordReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-                        });
-                        observer.unobserve(heading);
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            observer.observe(heading);
-        }
-    });
-}
-
-// ============================================
-// EFFET DE PARALLAXE LÉGER SUR LES IMAGES
-// ============================================
-
-function initParallaxImages() {
-    const images = document.querySelectorAll('.about-image, .department-image, .photo-frame, .gallery-item img');
-    images.forEach(img => {
-        img.classList.add('parallax-image');
-        img.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    img.style.transform = 'scale(1)';
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        observer.observe(img);
-    });
-}
-
-// ============================================
-// EFFET DE SURVOL SUR LES CARTES (AMÉLIORÉ)
-// ============================================
-
-function initCardHoverEffects() {
-    const cards = document.querySelectorAll('.value-card, .service-overview-card, .testimonial-card, .digital-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            card.style.transform = 'translateY(-8px) scale(1.02)';
-            card.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-            card.style.boxShadow = '';
-        });
-    });
-}
-
-// ============================================
-// ANIMATION DES BOUTONS
-// ============================================
-
-function initButtonAnimations() {
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.classList.add('animated-btn');
-        btn.style.position = 'relative';
-        btn.style.overflow = 'hidden';
-    });
-    
-    // Ajouter les styles des boutons animés
-    const btnStyles = document.createElement('style');
-    btnStyles.textContent = `
-        .animated-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .animated-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .animated-btn:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .animated-btn:active {
-            transform: scale(0.95);
-        }
-    `;
-    document.head.appendChild(btnStyles);
-}
-
-// ============================================
-// INITIALISATION COMPLÈTE
-// ============================================
-
-// Lancer toutes les animations
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        animateTexts();
-        animateCards();
-        initStaggerSections();
-        initTextReveal();
-        initParallaxImages();
-        initCardHoverEffects();
-        initButtonAnimations();
-        initAnimations();
-    }, 100);
-});
-
-// Réinitialiser les animations lors d'un changement de thème
-document.addEventListener('themeChanged', () => {
-    document.querySelectorAll('.animated').forEach(el => {
-        el.classList.remove('animated');
-        // Re-déclencher l'animation après un court délai
-        setTimeout(() => {
-            const animation = el.dataset.animation || 'fadeInUp';
-            el.classList.add('animated', animation);
-        }, 50);
-    });
-});
-
-console.log('✨ Animations professionnelles activées avec succès !');
-
-// ============================================
-// CARROUSEL DE TÉMOIGNAGES - AUTOMATIQUE
-// ============================================
-
-// ============================================
-// NOUVEAU CARROUSEL DE TÉMOIGNAGES
-// ============================================
-
-function initTestimonialCarousel() {
-    const items = document.querySelectorAll('.testimonial-item');
-    const dots = document.querySelectorAll('.testimonial-dots .dot');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
-    let intervalId = null;
-    const DELAY = 4000; // 4 secondes
-    let isTransitioning = false;
-    
-    if (items.length === 0) return;
-    
-    // Fonction pour afficher un témoignage
-    function showTestimonial(index) {
-        if (isTransitioning) return;
-        if (index < 0) index = items.length - 1;
-        if (index >= items.length) index = 0;
-        if (index === currentIndex) return;
-        
-        isTransitioning = true;
-        
-        // Cacher l'ancien
-        const oldItem = items[currentIndex];
-        oldItem.classList.remove('active');
-        oldItem.classList.add('exit');
-        
-        // Afficher le nouveau
-        const newItem = items[index];
-        newItem.classList.remove('exit');
-        newItem.classList.add('active');
-        
-        // Mettre à jour les dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-        
-        currentIndex = index;
-        
-        // Réinitialiser l'état de transition
-        setTimeout(() => {
-            isTransitioning = false;
-            // Nettoyer les classes
-            items.forEach(item => {
-                item.classList.remove('exit');
-            });
-        }, 700);
-    }
-    
-    // Passer au suivant
-    function nextTestimonial() {
-        if (isTransitioning) return;
-        showTestimonial((currentIndex + 1) % items.length);
-    }
-    
-    // Passer au précédent
-    function prevTestimonial() {
-        if (isTransitioning) return;
-        showTestimonial((currentIndex - 1 + items.length) % items.length);
-    }
-    
-    // Démarrer l'autoplay
-    function startAutoplay() {
-        stopAutoplay();
-        intervalId = setInterval(nextTestimonial, DELAY);
-    }
-    
-    // Arrêter l'autoplay
-    function stopAutoplay() {
-        if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
-        }
-    }
-    
-    // Réinitialiser l'autoplay
-    function resetAutoplay() {
-        stopAutoplay();
-        startAutoplay();
-    }
-    
-    // Événements sur les dots
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            if (index !== currentIndex) {
-                showTestimonial(index);
-                resetAutoplay();
-            }
-        });
-    });
-    
-    // Événements sur les boutons
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            prevTestimonial();
-            resetAutoplay();
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            nextTestimonial();
-            resetAutoplay();
-        });
-    }
-    
-    // Navigation au clavier
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevTestimonial();
-            resetAutoplay();
-        } else if (e.key === 'ArrowRight') {
-            nextTestimonial();
-            resetAutoplay();
-        }
-    });
-    
-    // Support du swipe
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const container = document.querySelector('.testimonial-container');
-    
-    if (container) {
-        container.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        container.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextTestimonial();
-                } else {
-                    prevTestimonial();
-                }
-                resetAutoplay();
-            }
-        }, { passive: true });
-    }
-    
-    // Pause au survol
-    const showcase = document.querySelector('.testimonials-showcase');
-    if (showcase) {
-        showcase.addEventListener('mouseenter', stopAutoplay);
-        showcase.addEventListener('mouseleave', startAutoplay);
-    }
-    
-    // Démarrer
-    showTestimonial(0);
-    startAutoplay();
-    
-    // Nettoyer si la section n'est pas visible
-    const section = document.querySelector('#testimonials');
-    if (section) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startAutoplay();
-                } else {
-                    stopAutoplay();
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        observer.observe(section);
-    }
-}
-
-// Initialiser au chargement
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(initTestimonialCarousel, 300);
-});
-
-// Initialiser le carrousel au chargement
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        initTestimonialCarousel();
-    }, 500);
-});

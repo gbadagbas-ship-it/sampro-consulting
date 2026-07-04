@@ -1,500 +1,636 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMPRO Consulting - Centre de Langues et Formations</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAMPRO Consulting — Cabinet de Formation et Conseil</title>
+
+    <!-- ===== POLICES ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png" />
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header>
-    <div class="container header-container">
-        <div class="logo">
-            <a href="#home" class="logo-link">
-                <img src="https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png" alt="SAMPRO Consulting" class="logo-img">
+
+    <!-- ========================================== -->
+    <!-- HEADER — Navigation -->
+    <!-- ========================================== -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <img src="https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png" alt="SAMPRO Consulting" />
+                <div class="logo-text">
+                    <h1>SAMPRO<span> Consulting</span></h1>
+                    <small>Centre de Langues, de Communications &amp; de Formations</small>
+                </div>
             </a>
-            <div class="logo-text">
-                <h1>SAMPRO<span > CONSULTING</span></h1>
-                <span style="font-size: x-small;">Centre de Langues, de Communications & de Formations</span>
-            </div>
+
+            <nav>
+                <a href="#home" class="active" data-key="home">Accueil</a>
+                <a href="#about" data-key="about">À propos</a>
+                <a href="#services" data-key="services">Services</a>
+                <a href="#director">Directeur</a>
+                <a href="#testimonials" data-key="testimonials">Témoignages</a>
+                <a href="#contact" data-key="contact">Contact</a>
+                <div class="nav-actions">
+                    <button class="nav-btn" id="langToggle">
+                        <span id="langLabel">FR</span>
+                    </button>
+                    <button class="nav-btn" id="themeToggle">☀</button>
+                </div>
+            </nav>
+
+            <button class="mobile-toggle" id="mobileToggle">≡</button>
         </div>
-        
-        <div class="header-actions">
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <nav id="mainNav">
-            <ul>
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Témoignages</a></li>
-                <!-- <li><a href="#portfolio">Réalisations</a></li> -->
-                <li><a href="#director">Directeur</a></li> 
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    </header>
+
+    <!-- ========== MOBILE MENU ========== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">✕</button>
+        <a href="#home" data-key="home">Accueil</a>
+        <a href="#about" data-key="about">À propos</a>
+        <a href="#services" data-key="services">Services</a>
+        <a href="#director">Directeur</a>
+        <a href="#testimonials" data-key="testimonials">Témoignages</a>
+        <a href="#contact" data-key="contact">Contact</a>
+        <button class="btn btn-primary" id="mobileLangBtn" style="margin-top:24px; width:auto; padding:12px 32px;">
+            FR / EN
+        </button>
     </div>
-</header>
-    <!-- Hero Section -->
-   <!-- Hero Section -->
-<!-- Hero Section with YouTube Background -->
+
+    <!-- ========== HERO — OPTION 1 : BOUTONS CÔTE À CÔTE ========== -->
 <section class="hero" id="home">
-    <!-- YouTube Video Background -->
-    <div class="hero-video-background">
-        <div class="youtube-bg" id="youtubeBg"></div>
-        <!-- <div class="video-overlay"></div> -->
+    <div class="hero-bg">
+        <img src="https://i.postimg.cc/KzMqfLvd/Chat-GPT-Image-12-juin-2026-03-40-07.png" />
     </div>
-    
+    <div class="hero-overlay"></div>
+
     <div class="container">
         <div class="hero-content">
-            <div class="hero-text">
-                <!-- <div class="hero-badge">Expertise & Innovation</div> -->
-                <h1>Transformation lingustique, Digitale <span> &</span></span> <span class="gradient-text"> Développement Humain</span></h1>
-                <p>SAMPRO Consulting réinvente la formation avec une approche innovante qui combine excellence académique, solutions digitales et accompagnement stratégique sur mesure.</p>
-                <div class="hero-btns">
-                    <a href="#services" class="btn btn-primary">
-                        <!-- <i class="fas fa-rocket"></i> -->
-                        Découvrir nos services
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <!-- <i class="fas fa-comment-dots"></i> -->
-                        Discutons de votre projet
-                    </a>
-                </div>
-            </div>
-            
-            <div class="hero-media">
-                <!-- <div class="hero-video-container">
-                    <div class="play-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <!-- <video autoplay muted loop playsinline class="hero-video">
-                        <source src="https://media.istockphoto.com/id/1091011430/video/group-of-students-in-classroom.mp4?s=mp4-640x640-is&k=20&c=EtEkVDNXZtrHcqvk4x4yS4xpE3R9PIvkZ1lh-iqLz0k=" type="video/mp4">
-                        Votre navigateur ne supporte pas la vidéo.
-                    </video> -->
-                </div> 
+            <h1>
+                Transformation <span class="highlight">linguistique</span>, 
+                <span class="highlight">Digitale</span> <br /> &amp; <br />
+                <span class="hero-brand">Développement Humain</span>
+            </h1>
+            <p class="hero-desc">
+                SAMPRO Consulting réinvente la formation avec une approche innovante qui combine <strong>excellence académique</strong>, <strong>solutions digitales</strong> et <strong>accompagnement stratégique</strong> sur mesure.
+            </p>
+            <div class="hero-btns">
+                <a href="#services" class="btn btn-primary">Découvrir nos services</a>
+                <a href="#contact" class="btn btn-outline-light">Découvrir votre projet</a>
             </div>
         </div>
     </div>
-    <div class="hero-shape"></div>
 </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
+    <!-- ========== ABOUT ========== -->
+    <section class="section section-about" id="about">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag" style="color: #27ae60;">Qui sommes-nous ?</span>
-                <h2>Notre ADN</h2>
-                <p class="section-subtitle">Découvrez l'essence de SAMPRO Consulting et nos valeurs fondamentales</p>
+            <div class="section-header reveal">
+                <span class="tag" data-key="aboutTag">Qui sommes-nous ?</span>
+                <h2>Notre <span class="text-accent">ADN</span></h2>
+                <p data-key="aboutSub">Découvrez l'essence de SAMPRO Consulting à travers notre mission, nos valeurs et notre engagement.</p>
             </div>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Équipe SAMPRO Consulting" loading="lazy">
-                    <div class="image-caption">
-                        <p>Notre équipe d'experts et consultants passionnés</p>
+
+            <!-- Bloc 1 : Présentation -->
+            <div class="about-hero reveal">
+                <div class="about-hero-content">
+                    <div class="about-hero-text">
+                        <h3>Une structure <span class="text-accent">humaine</span> et <span class="text-accent">orientée résultats</span></h3>
+                        <p data-key="aboutP1">
+                            <strong>SAMPRO Consulting</strong> est une structure basée à Lomé, engagée dans le <strong>développement des compétences linguistiques, communicationnelles, professionnelles et digitales</strong>.
+                        </p>
+                        <p data-key="aboutP2">
+                            Nous croyons que <strong>la maîtrise de la communication, des langues et des outils modernes</strong> est aujourd'hui un levier essentiel de réussite personnelle et professionnelle.
+                        </p>
+                    </div>
+                    <div class="about-hero-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Équipe SAMPRO" loading="lazy" />
                     </div>
                 </div>
-                
-                <div class="about-text">
-                    <h3>Innovation & Excellence</h3>
-                    <p>SAMPRO Consulting est une structure basée à Lomé, engagée dans le <strong>développement des compétences linguistiques, communicationnelles, professionnelles et digitales</strong>, avec une approche humaine, pratique et orientée résultats.</p>
-                    
-                    <!-- <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number">150+</span>
-                            <span class="stat-label">Clients satisfaits</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">98%</span>
-                            <span class="stat-label">Taux de réussite</span>
-                        </div>
-                         <div class="stat">
-                            <span class="stat-number">40+</span>
-                            <span class="stat-label">Projets réalisés</span>
-                        </div> 
-                    </div> -->
-                    
-                    <h3>Mission & Vision</h3>
-                    <p><strong>Accompagner les individus et les organisations à mieux communiquer, mieux se former et mieux se structurer</strong>, grâce à des solutions adaptées, accessibles et durables.</p>
-                    <p>Devenir une <strong>référence en formation linguistique, informatique, développement des compétences et transformation digitale</strong> au Togo et en Afrique.</p>
+            </div>
+
+            <!-- Bloc 2 : Mission & Vision -->
+            <div class="about-mv-grid reveal">
+                <div class="about-mv-card mission">
+                    <div class="mv-icon">🎯</div>
+                    <h4 data-key="missionTitle">Notre mission</h4>
+                    <p data-key="missionText">Accompagner les individus et les organisations à mieux communiquer, mieux se former et mieux se structurer, grâce à des solutions adaptées, accessibles et durables.</p>
+                    <div class="mv-line"></div>
+                </div>
+                <div class="about-mv-card vision">
+                    <div class="mv-icon">👁️</div>
+                    <h4 data-key="visionTitle">Notre vision</h4>
+                    <p data-key="visionText">Devenir une référence en formation linguistique, informatique, développement des compétences et transformation digitale au Togo et en Afrique.</p>
+                    <div class="mv-line"></div>
                 </div>
             </div>
-            
-            <!-- Gallery d'activités -->
-            <div class="gallery-section">
-                <div class="section-header">
-                    <span class="section-tag" style="color: #27ae60;">Notre univers</span>
-                    <h3>Nos Activités en Images</h3>
+
+            <!-- ===== GALERIE — NOS ACTIVITÉS EN IMAGES ===== -->
+            <div class="about-gallery reveal">
+                <div class="gallery-header">
+                    <span class="tag" data-key="galleryTag">Notre univers</span>
+                    <h3>Nos <span class="text-accent">Activités en Images</span></h3>
+                    <p data-key="gallerySub">Découvrez l'univers de SAMPRO Consulting à travers nos formations, séminaires et réalisations.</p>
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600" alt="Formation en anglais" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600" alt="Formation linguistique" loading="lazy" />
                         <div class="gallery-overlay">
-                            <!-- <i class="fas fa-search-plus"></i> -->
                             <h4>Formation linguistique</h4>
+                            <p>Cours d'anglais, français et chinois</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://i.postimg.cc/mr2QPVRm/IMG-20260103-WA0028.jpg" alt="Formation professionnelle" loading="lazy">
+                        <img src="https://i.postimg.cc/mr2QPVRm/IMG-20260103-WA0028.jpg" alt="Séminaire professionnel" loading="lazy" />
                         <div class="gallery-overlay">
-                            <!-- <i class="fas fa-search-plus"></i> -->
                             <h4>Séminaires professionnels</h4>
+                            <p>Leadership, communication et développement</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://i.postimg.cc/GhCzcF8b/IMG-20260103-WA0094.jpg" alt="Travail d'équipe" loading="lazy">
+                        <img src="https://i.postimg.cc/GhCzcF8b/IMG-20260103-WA0094.jpg" alt="Accompagnement personnalisé" loading="lazy" />
                         <div class="gallery-overlay">
-                            <!-- <i class="fas fa-search-plus"></i> -->
                             <h4>Accompagnement personnalisé</h4>
+                            <p>Coaching et suivi individuel</p>
                         </div>
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Design graphique" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Design graphique" loading="lazy" />
                         <div class="gallery-overlay">
-                            <!-- <i class="fas fa-search-plus"></i> -->
                             <h4>Création graphique</h4>
+                            <p>Logos, affiches et identité visuelle</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" alt="Solutions digitales" loading="lazy" />
+                        <div class="gallery-overlay">
+                            <h4>Solutions digitales</h4>
+                            <p>Sites web et transformation numérique</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Événement SAMPRO" loading="lazy" />
+                        <div class="gallery-overlay">
+                            <h4>Événements & séminaires</h4>
+                            <p>Conférences et ateliers interactifs</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <BR><BR> <BR></BR>
+
+            <!-- Bloc 3 : Valeurs -->
+            <div class="about-values-section reveal">
+                <div class="values-header">
+                    <span class="tag" data-key="valuesTag">Nos piliers</span>
+                    <h3>Des valeurs qui <span class="text-accent">nous guident</span></h3>
+                </div>
+                <div class="about-values-grid">
+                    <div class="value-card">
+                        <div class="value-image">
+                            <img src="https://img.freepik.com/vecteurs-libre/coche-ruban-prix-style-degrade-etoiles_78370-1098.jpg?semt=ais_hybrid&w=740&q=80" alt="Excellence" loading="lazy" />
+                        </div>
+                        <div class="value-content">
+                            <h4 data-key="val1">Excellence &amp; Professionnalisme</h4>
+                            <p data-key="val1desc">Nous visons l'excellence dans chaque projet avec rigueur et dévouement.</p>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-image">
+                            <img src="https://img.freepik.com/vecteurs-libre/concept-education-doodle_98292-6867.jpg" alt="Pédagogie" loading="lazy" />
+                        </div>
+                        <div class="value-content">
+                            <h4 data-key="val2">Pédagogie &amp; Impact</h4>
+                            <p data-key="val2desc">Des méthodes modernes pour des résultats concrets et durables.</p>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-image">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDK34uDwkn9QPKD6-mxXaMusPZjCYcSgtIWA&s" alt="Innovation" loading="lazy" />
+                        </div>
+                        <div class="value-content">
+                            <h4 data-key="val3">Innovation &amp; Adaptation</h4>
+                            <p data-key="val3desc">Toujours à la pointe des nouvelles technologies et des méthodes.</p>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-image">
+                            <img src="https://img.freepik.com/vecteurs-libre/solution-equipe-commerciale-dans-travail-equipe-partenariat_126523-1728.jpg?semt=ais_hybrid&w=740&q=80" alt="Proximité" loading="lazy" />
+                        </div>
+                        <div class="value-content">
+                            <h4 data-key="val4">Proximité &amp; Écoute</h4>
+                            <p data-key="val4desc">Un accompagnement personnalisé et humain au cœur de notre approche.</p>
+                        </div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-image">
+                            <img src="https://img.freepik.com/vecteurs-libre/illustration-notion-discipline_23-2148680592.jpg?semt=ais_hybrid&w=740&q=80" alt="Discipline" loading="lazy" />
+                        </div>
+                        <div class="value-content">
+                            <h4 data-key="val5">Discipline &amp; Vision</h4>
+                            <p data-key="val5desc">Une approche structurée pour des résultats pérennes.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Nos valeurs -->
-            <div class="values-section">
-                <div class="section-header">
-                    <span class="section-tag" style="color: #27ae60;">Nos piliers</span>
-                    <h3>Valeurs Fondamentales</h3>
+
+            <!-- Bloc 4 : Citation du fondateur
+            <div class="about-founder reveal">
+                <div class="founder-image">
+                    <img src="https://i.postimg.cc/TYqb3RRR/IMG-20251229-WA0007.jpg" alt="DEGBEDJI Koffi Samuel" loading="lazy" />
                 </div>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <!-- <i class="fas fa-star"></i> -->
-                             <img src="https://img.freepik.com/vecteurs-libre/coche-ruban-prix-style-degrade-etoiles_78370-1098.jpg?semt=ais_hybrid&w=740&q=80"  alt="Excellence" loading="lazy" style="width: 100%; height: 100%;">
-                        </div>
-                        <h4>Excellence & Innovation</h4>
-                        <p>Nous visons l'excellence dans chaque projet</p>
+                <div class="founder-content">
+                    <div class="founder-quote">
+                        <span class="quote-mark">"</span>
+                        <p data-key="founderQuote">Chaque projet est une opportunité d'impact, et chaque apprenant mérite les outils pour construire son avenir avec confiance.</p>
+                        <span class="founder-name" data-key="founderName">DEGBEDJI Koffi Samuel, Fondateur &amp; CEO</span>
                     </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <!-- <i class="fas fa-chalkboard-user"></i> -->
-                         <img src="https://img.freepik.com/vecteurs-libre/concept-education-doodle_98292-6867.jpg"  alt="Pédagogie Avancée" loading="lazy" style="width: 100%;border-radius: 50%; height: 100%;">
-
-                        </div>
-                        <h4>Pédagogie Avancée</h4>
-                        <p>Méthodes modernes et résultats concrets</p>
+                    <div class="founder-badges">
+                        <span>Expert en Formation</span>
+                        <span>Consultant Stratégique</span>
+                        <span>Leader Panafricain</span>
                     </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <!-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFvceG4FFGJ91lRKWcF6Il8VqK6KSZ8D7Nyw&s -->
-                            <!-- <i class="fas fa-lightbulb"></i> -->
-                                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDK34uDwkn9QPKD6-mxXaMusPZjCYcSgtIWA&s" alt="Innovation Continue" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
-                        </div>
-                        <h4>Innovation Continue</h4>
-                        <p>Toujours à la pointe des nouvelles technologies</p>
+                </div>
+            </div>-->
+        </div> 
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section section-services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag" data-key="servicesTag">Notre expertise</span>
+                <h2>Des solutions <span class="text-accent">sur mesure</span></h2>
+                <p data-key="servicesSub">Une gamme complète de services pour répondre à tous vos besoins en formation et développement.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card reveal" style="transition-delay:0.05s">
+                    <div class="card-img">
+                        <img src="https://polysud-formation.com/wp-content/uploads/2022/03/formation-langues-767x767-min.jpg" alt="Formation linguistique" loading="lazy" />
                     </div>
-                    
-                    <div class="value-card">
-                        <div class="value-icon">
+                    <div class="card-body">
+                        <h3 data-key="dept1">Formation Linguistique</h3>
+                        <p data-key="dept1desc">Anglais, français, chinois — cours généraux, professionnels et coaching personnalisé.</p>
+                        <a href="#" class="link" data-service="service-detail-1">Découvrir →</a>
+                    </div>
+                </div>
 
-                            <!-- <i class="fas fa-handshake"></i> -->
-                                <img src="https://img.freepik.com/vecteurs-libre/solution-equipe-commerciale-dans-travail-equipe-partenariat_126523-1728.jpg?semt=ais_hybrid&w=740&q=80" alt="Partage & Collaboration" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
+                <div class="service-card reveal" style="transition-delay:0.1s">
+                    <div class="card-img">
+                        <img src="https://st2.depositphotos.com/1071909/7201/i/450/depositphotos_72019191-stock-photo-personal-development-career.jpg" alt="Développement" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h3 data-key="dept2">Développement des Compétences</h3>
+                        <p data-key="dept2desc">Séminaires, leadership, prise de parole, orientation scolaire et coaching.</p>
+                        <a href="#" class="link" data-service="service-detail-2">Découvrir →</a>
+                    </div>
+                </div>
 
-                        </div>
-                        <h4>Partage & Collaboration</h4>
-                        <p>Un accompagnement personnalisé et humain</p>
+                <div class="service-card reveal" style="transition-delay:0.15s">
+                    <div class="card-img">
+                        <img src="https://www.inseec.com/wp-content/uploads/sites/32/2025/11/guide-inseec-hero-quest-ce-que-Marketing-Digital.jpg" alt="Marketing digital" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h3 data-key="dept3">Marketing Digital &amp; Stratégie</h3>
+                        <p data-key="dept3desc">Stratégies de visibilité, création de contenu, gestion de pages professionnelles.</p>
+                        <a href="#" class="link" data-service="service-detail-3">Découvrir →</a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay:0.2s">
+                    <div class="card-img">
+                        <img src="https://etudestech.com/wp-content/uploads/2022/12/entreprise-informatique-1536x1024.jpeg" alt="Solutions digitales" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h3 data-key="dept4">Informatique &amp; Solutions Digitales</h3>
+                        <p data-key="dept4desc">Création de sites web, maintenance, formation aux outils numériques.</p>
+                        <a href="#" class="link" data-service="service-detail-4">Découvrir →</a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay:0.25s">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Design" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h3 data-key="dept5">Communication Visuelle &amp; Design</h3>
+                        <p data-key="dept5desc">Logos, affiches, flyers, bannières, identité visuelle et direction artistique.</p>
+                        <a href="#" class="link" data-service="service-detail-5">Découvrir →</a>
+                    </div>
+                </div>
+
+                <div class="service-card reveal" style="transition-delay:0.3s">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600" alt="Impression" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h3 data-key="dept6">Impression &amp; Production</h3>
+                        <p data-key="dept6desc">Supports de communication, tableaux photo, encadrements et impression.</p>
+                        <a href="#" class="link" data-service="service-detail-6">Découvrir →</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="founder-quote">
-                <i class="fas fa-quote-left quote-icon"></i>
-                <p>« Chaque projet est une opportunité d'impact, et chaque apprenant mérite les outils pour construire son avenir avec confiance. Notre approche combine excellence académique, innovation digitale et accompagnement humain. »</p>
-                <h4>— DEGBEDJI Koffi Samuel, Fondateur & CEO</h4>
+
+            <!-- ===== DEPARTMENTS ===== -->
+            <div style="margin-top:48px" class="reveal">
+                <div style="text-align:center; margin-bottom:28px;">
+                    <span class="tag" data-key="deptTag">Nos départements</span>
+                    <h3 style="font-size:1.6rem;">Une organisation <span class="text-accent">au service</span> de votre réussite</h3>
+                </div>
+
+                <div class="dept-grid">
+                    <div class="dept-item featured reveal" style="transition-delay:0.05s" data-modal="modal-dept1">
+                        <div class="dept-img">
+                            <img src="https://i.postimg.cc/N0LPyZhL/Chat-GPT-Image-12-juin-2026-03-07-19.png" alt="Linguistique" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="priority">Pôle prioritaire</span>
+                            <h3 data-key="dept1">Formation Linguistique</h3>
+                            <p data-key="dept1desc2">Anglais, français, chinois — traduction et interprétation.</p>
+                            <div class="dept-list">
+                                <span>Anglais général / pro</span>
+                                <span>Français pour anglophones</span>
+                                <span>Initiation chinois</span>
+                                <span>Traduction &amp; interprétation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.1s" data-modal="modal-dept2">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600" alt="Compétences" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept2tag">Développement</span>
+                            <h3 data-key="dept2">Formation &amp; Développement</h3>
+                            <p data-key="dept2desc2">Séminaires, leadership, coaching.</p>
+                            <div class="dept-list">
+                                <span>Séminaires pro</span>
+                                <span>Développement personnel</span>
+                                <span>Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.15s" data-modal="modal-dept3">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600" alt="Marketing" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept3tag">Stratégie</span>
+                            <h3 data-key="dept3">Marketing Digital &amp; Stratégie</h3>
+                            <p data-key="dept3desc2">Visibilité, contenu, réseaux sociaux.</p>
+                            <div class="dept-list">
+                                <span>Stratégies de visibilité</span>
+                                <span>Création de contenu</span>
+                                <span>Communication digitale</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.2s" data-modal="modal-dept4">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" alt="Digital" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept4tag">Technologie</span>
+                            <h3 data-key="dept4">Informatique &amp; Solutions Digitales</h3>
+                            <p data-key="dept4desc2">Sites web, maintenance, formation.</p>
+                            <div class="dept-list">
+                                <span>Sites web vitrines</span>
+                                <span>Maintenance</span>
+                                <span>Formation bureautique</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.25s" data-modal="modal-dept5">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Design" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept5tag">Créatif</span>
+                            <h3 data-key="dept5">Communication Visuelle &amp; Design</h3>
+                            <p data-key="dept5desc2">Logos, affiches, identité visuelle.</p>
+                            <div class="dept-list">
+                                <span>Conception graphique</span>
+                                <span>Visuels professionnels</span>
+                                <span>Direction artistique</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.3s" data-modal="modal-dept6">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600" alt="Impression" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept6tag">Production</span>
+                            <h3 data-key="dept6">Impression &amp; Production</h3>
+                            <p data-key="dept6desc2">Supports événementiels, encadrements.</p>
+                            <div class="dept-list">
+                                <span>Travaux d'impression</span>
+                                <span>Supports pour événements</span>
+                                <span>Tableaux &amp; encadrements</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dept-item reveal" style="transition-delay:0.35s" data-modal="modal-dept7">
+                        <div class="dept-img">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Conseil" loading="lazy" />
+                        </div>
+                        <div class="dept-body">
+                            <span class="dept-tag" data-key="dept7tag">Innovation</span>
+                            <h3 data-key="dept7">Conseil, Innovation &amp; Projets</h3>
+                            <p data-key="dept7desc">Accompagnement stratégique, projets éducatifs.</p>
+                            <div class="dept-list">
+                                <span>Conseil stratégique</span>
+                                <span>Projets éducatifs</span>
+                                <span>Impact communautaire</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-top:56px; padding:40px; background:var(--bleu-royal);background-image: url(https://i.postimg.cc/9M78bTQh/Chat-GPT-Image-12-juin-2026-03-43-30.png); border-radius:var(--radius-large);" class="reveal">
+                <h3 style="color:#fff; font-size:1.6rem; margin-bottom:6px;" data-key="ctaTitle">Prêt à transformer votre vision ?</h3>
+                <p style="color:rgba(255, 255, 255, 0.555); max-width:500px; margin:0 auto 20px;" data-key="ctaDesc">Nos experts sont à votre écoute pour concrétiser vos projets.</p>
+                <a href="#contact" class="btn btn-light" data-key="ctaBtn">Discuter de mon projet</a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section section-services" id="services">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag" style="color: #27ae60;">Notre expertise</span>
-                <h2>Nos Solutions Expertes</h2>
-                <p class="section-subtitle">Une gamme complète de services organisés en départements spécialisés pour répondre à tous vos besoins en formation, développement des compétences et solutions digitales.</p>
+    <!-- ========== MODALES ========== -->
+    <!-- Modale 1 : Formation Linguistique -->
+    <div class="modal" id="modal-dept1">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept1">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://i.postimg.cc/N0LPyZhL/Chat-GPT-Image-12-juin-2026-03-07-19.png" alt="Formation Linguistique" loading="lazy" />
+                </div>
+                <div class="modal-text">
+                    <span class="modal-tag">Pôle prioritaire</span>
+                    <h2>Formation Linguistique</h2>
+                    <p class="modal-desc">Nous proposons des formations linguistiques adaptées aux besoins académiques, professionnels et personnels, avec une approche immersive et personnalisée.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>🇬🇧 Cours d'anglais</h4>
+                            <ul>
+                                <li>Anglais général - Tous niveaux</li>
+                                <li>Anglais professionnel / des affaires</li>
+                                <li>Coaching personnel intensif</li>
+                                <li>Préparation aux examens (TOEFL, IELTS, TOEIC)</li>
+                                <li>Anglais conversationnel et oral</li>
+                            </ul>
+                        </div>
+                        <div class="modal-service-group">
+                            <h4>🇫🇷 Cours de français</h4>
+                            <ul>
+                                <li>Français général - Tous niveaux</li>
+                                <li>Français pour anglophones</li>
+                                <li>Amélioration de l'expression écrite et orale</li>
+                                <li>Français professionnel</li>
+                                <li>Préparation DELF/DALF</li>
+                            </ul>
+                        </div>
+                        <div class="modal-service-group">
+                            <h4>🇨🇳 Cours de chinois</h4>
+                            <ul>
+                                <li>Initiation à la langue chinoise</li>
+                                <li>Bases de communication quotidienne</li>
+                                <li>Culture chinoise et business</li>
+                                <li>Préparation HSK</li>
+                            </ul>
+                        </div>
+                        <div class="modal-service-group full-width">
+                            <h4>🔄 Traduction & Interprétation</h4>
+                            <div class="modal-translation-grid">
+                                <div>
+                                    <p><strong>Langues supportées :</strong></p>
+                                    <ul>
+                                        <li>Anglais ↔ Français</li>
+                                        <li>Français ↔ Chinois</li>
+                                        <li>Anglais ↔ Langues locales</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p><strong>Services :</strong></p>
+                                    <ul>
+                                        <li>Traduction de documents</li>
+                                        <li>Interprétation en temps réel</li>
+                                        <li>Sous-titrage vidéo</li>
+                                        <li>Services événementiels</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Services Overview Cards -->
-            <div class="services-overview">
-                <div class="service-overview-card">
-                    <div class="card-icon">
-                        <!-- <i class="fas fa-language"></i> -->
-                             <img src="https://polysud-formation.com/wp-content/uploads/2022/03/formation-langues-767x767-min.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+    </div>
 
-                    </div>
-                    <h3>Formation Linguistique</h3>
-                    <p>Maîtrisez les langues avec nos formations personnalisées en anglais, français et chinois.</p>
-                    <a href="#linguistique" class="card-link" data-department="linguistique">Découvrir <i class="fas fa-arrow-right"></i></a>
+    <!-- Modale 2 : Développement des Compétences -->
+    <div class="modal" id="modal-dept2">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept2">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600" alt="Développement des Compétences" loading="lazy" />
                 </div>
-                
-                <div class="service-overview-card">
-                    <div class="card-icon">
-                        <!-- <i class="fas fa-laptop-code"></i> -->
-                             <img src="https://www.inseec.com/wp-content/uploads/sites/32/2025/11/guide-inseec-hero-quest-ce-que-Marketing-Digital.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
-
+                <div class="modal-text">
+                    <span class="modal-tag">Développement</span>
+                    <h2>Formation & Développement des Compétences</h2>
+                    <p class="modal-desc">Optimisez le potentiel de vos équipes avec nos programmes de développement professionnel sur mesure.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>🎯 Nos spécialités</h4>
+                            <ul>
+                                <li>Séminaires professionnels</li>
+                                <li>Développement personnel</li>
+                                <li>Leadership</li>
+                                <li>Prise de parole en public</li>
+                                <li>Orientation scolaire</li>
+                                <li>Coaching académique</li>
+                                <li>Gestion du stress</li>
+                                <li>Bien-être au travail</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h3>Solutions Digitales</h3>
-                    <p>Sites web, marketing digital et transformation numérique pour votre entreprise.</p>
-                    <a href="#informatique" class="card-link" data-department="informatique">Explorer <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-overview-card">
-                    <div class="card-icon">
-                        <!-- <i class="fas fa-chalkboard-user"></i> -->
-                                <img src="https://st2.depositphotos.com/1071909/7201/i/450/depositphotos_72019191-stock-photo-personal-development-career.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
                     </div>
-                    <h3>Développement Professionnel</h3>
-                    <p>Formations, coaching et séminaires pour le développement de vos compétences.</p>
-                    <a href="#competences" class="card-link" data-department="competences">Voir plus <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            
-            <!-- Department Tabs -->
-            <div class="department-wrapper">
-                <div class="department-tabs">
-                    <button class="tab-btn active" data-department="linguistique">
-                        <!-- <i class="fas fa-language"></i> -->
-                        <span>Formation Linguistique</span>
-                    </button>
-                    <button class="tab-btn" data-department="competences">
-                        <!-- <i class="fas fa-brain"></i> -->
-                        <span>Développement des Compétences</span>
-                    </button>
-                    <button class="tab-btn" data-department="marketing">
-                        <!-- <i class="fas fa-bullhorn"></i> -->
-                        <span>Marketing Digital</span>
-                    </button>
-                    <button class="tab-btn" data-department="informatique">
-                        <!-- <i class="fas fa-laptop"></i> -->
-                        <span>Informatique & Digital</span>
-                    </button>
-                    <button class="tab-btn" data-department="design">
-                        <!-- <i class="fas fa-paintbrush"></i> -->
-                        <span>Communication Visuelle</span>
-                    </button>
-                    <button class="tab-btn" data-department="impression">
-                        <!-- <i class="fas fa-print"></i> -->
-                        <span>Impression & Production</span>
-                    </button>
-                    <button class="tab-btn" data-department="conseil">
-                        <!-- <i class="fas fa-lightbulb"></i> -->
-                        <span>Conseil & Projets</span>
-                    </button>
-                </div>
-                
-                <!-- Département 1 - Formation Linguistique -->
-                <div class="department-content active" id="linguistique">
-                    <div class="department-highlight">
-                        <div class="highlight-icon">
-                            <!-- <i class="fas fa-language"></i> -->
-                             <img src="https://polysud-formation.com/wp-content/uploads/2022/03/formation-langues-767x767-min.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 25%;">
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 1 — Formation Linguistique</h3>
-                            <p>Pôle Prioritaire d'Excellence</p>
-                        </div>
-                    </div>
-                    
-                    <div class="department-grid">
-                        <div class="department-info">
-                            <p>Nous proposons des formations linguistiques adaptées aux besoins académiques, professionnels et personnels, avec une approche immersive et personnalisée.</p>
-                            
-                            <div class="services-list">
-                                <div class="service-category">
-                                    <h4><i class="fas fa-flag-usa"></i> Cours d'anglais</h4>
-                                    <ul>
-                                        <li>Anglais général - Tous niveaux</li>
-                                        <li>Anglais professionnel / des affaires</li>
-                                        <li>Coaching personnel intensif</li>
-                                        <li>Préparation aux examens (TOEFL, IELTS, TOEIC)</li>
-                                        <li>Anglais conversationnel et oral</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="service-category">
-                                    <h4><i class="fas fa-flag-france"></i> Cours de français</h4>
-                                    <ul>
-                                        <li>Français général - Tous niveaux</li>
-                                        <li>Français pour anglophones</li>
-                                        <li>Amélioration de l'expression écrite et orale</li>
-                                        <li>Français professionnel</li>
-                                        <li>Préparation DELF/DALF</li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="service-category">
-                                    <h4><i class="fas fa-globe-asia"></i> Cours de chinois</h4>
-                                    <ul>
-                                        <li>Initiation à la langue chinoise</li>
-                                        <li>Bases de communication quotidienne</li>
-                                        <li>Culture chinoise et business</li>
-                                        <li>Préparation HSK</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <div class="translation-box">
-                                <h4><i class="fas fa-exchange-alt"></i> Traduction & Interprétation</h4>
-                                <div class="translation-grid">
-                                    <div>
-                                        <p><strong>Langues supportées :</strong></p>
-                                        <ul>
-                                            <li>Anglais ↔ Français</li>
-                                            <li>Français ↔ Chinois</li>
-                                            <li>Anglais ↔ Langues locales</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <p><strong>Services :</strong></p>
-                                        <ul>
-                                            <li>Traduction de documents</li>
-                                            <li>Interprétation en temps réel</li>
-                                            <li>Sous-titrage vidéo</li>
-                                            <li>Services événementiels</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="department-image">
-                            <img src="https://i.postimg.cc/N0LPyZhL/Chat-GPT-Image-12-juin-2026-03-07-19.png" alt="Formation linguistique" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Département 2 - Développement des Compétences -->
-                <div class="department-content" id="competences">
-                    <div class="department-highlight">
-                        <div class="highlight-icon">
-                            <!-- <i class="fas fa-brain"></i> -->
-                             <img src="https://www.inseec.com/wp-content/uploads/sites/32/2025/11/guide-inseec-hero-quest-ce-que-Marketing-Digital.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 25%;">
+        </div>
+    </div>
 
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 2 — Formation & Développement des Compétences</h3>
-                            <p>Optimisez votre potentiel</p>
+    <!-- Modale 3 : Marketing Digital -->
+    <div class="modal" id="modal-dept3">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept3">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600" alt="Marketing Digital" loading="lazy" />
+                </div>
+                <div class="modal-text">
+                    <span class="modal-tag">Stratégie</span>
+                    <h2>Marketing Digital & Stratégie</h2>
+                    <p class="modal-desc">Boostez votre présence en ligne avec nos stratégies digitales innovantes.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>📊 Nos services</h4>
+                            <ul>
+                                <li>Création et gestion de pages professionnelles</li>
+                                <li>Stratégies de visibilité digitale</li>
+                                <li>Création de contenu optimisé SEO</li>
+                                <li>Analyse de données et reporting</li>
+                                <li>Formation en marketing digital</li>
+                                <li>Campagnes Facebook Ads & Google Ads</li>
+                                <li>Email marketing et stratégies d'acquisition</li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <div class="department-grid reverse">
-                        <div class="department-info">
-                            <p>Optimisez le potentiel de vos équipes avec nos programmes de développement professionnel sur mesure.</p>
-                            
-                            <div class="skills-box">
-                                <h4>Nos spécialités :</h4>
-                                <div class="skills-grid">
-                                    <span class="skill-tag" style="color: #27ae60;">Séminaires professionnels</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Développement personnel</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Leadership</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Prise de parole en public</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Orientation scolaire</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Coaching académique</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Gestion du stress</span>
-                                    <span class="skill-tag" style="color: #27ae60;">Bien-être au travail</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="department-image">
-                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600" alt="Développement des compétences" loading="lazy">
-                        </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
                     </div>
                 </div>
-                
-                <!-- Département 3 - Marketing Digital -->
-                <div class="department-content" id="marketing">
-                    <div class="department-highlight">
-                        <div style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1-sZWyQM6Qv5W1ZaCXlaVIyY-r91Ss_Pv_db-n8WaBQ&s=10); background-position: center;background-size: cover;" class="highlight-icon">
-                            <!-- <i class="fas fa-bullhorn"></i> -->
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 3 — Marketing Digital & Stratégie</h3>
-                            <p>Boostez votre présence en ligne</p>
-                        </div>
-                    </div>
-                    
-                    <div class="marketing-grid">
-                        <div class="marketing-card">
-                            <div style="background-image: url(https://static.vecteezy.com/ti/vecteur-libre/t2/41930433-ensemble-de-social-medias-logo-sur-blanc-contexte-social-medias-icone-ensemble-collection-vectoriel.jpg); background-position: center;background-size: cover;" class="marketing-icon">
-                                <!-- <i class="fas fa-chart-line"></i> -->
-                            </div>
-                            <h4>Stratégie Social Media</h4>
-                            <p>Gestion complète de vos réseaux sociaux</p>
-                        </div>
-                        
-                        <div class="marketing-card">
-                            <div style="background-image: url(https://www.shippingbo.com/content/uploads/2025/03/la-strategie-marketing-pour-le-market-place-scaled.webp); background-position: center;background-size: cover; "class ="marketing-icon">
-                                <!-- <i class="fas fa-bullseye"></i> -->
-                            </div>
-                            <h4>Publicité en ligne</h4>
-                            <p>Campagnes Facebook Ads & Google Ads</p>
-                        </div>
-                        
-                        <div class="marketing-card">
-                            <div style="background-image: url(https://img.magnific.com/vecteurs-libre/enveloppe-signe-courrier-electronique_1020-530.jpg?semt=ais_hybrid&w=740&q=80); background-position: center;background-size: cover;" class="marketing-icon">
-                                <!-- <i class="fas fa-envelope-open"></i> -->
-                            </div>
-                            <h4>Email Marketing</h4>
-                            <p>Stratégies d'acquisition et fidélisation</p>
-                        </div>
-                    </div>
-                    
-                    <div class="marketing-services">
-                        <h4>Services complets :</h4>
-                        <ul>
-                            <li>Création et gestion de pages professionnelles</li>
-                            <li>Stratégies de visibilité digitale</li>
-                            <li>Création de contenu optimisé SEO</li>
-                            <li>Analyse de données et reporting</li>
-                            <li>Formation en marketing digital</li>
-                        </ul>
-                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale 4 : Informatique & Solutions Digitales -->
+    <div class="modal" id="modal-dept4">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept4">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://etudestech.com/wp-content/uploads/2022/12/entreprise-informatique-1536x1024.jpeg" alt="Solutions Digitales" loading="lazy" />
                 </div>
-                
-                <!-- Département 4 - Informatique & Solutions Digitales -->
-                <div class="department-content" id="informatique">
-                    <div class="department-highlight">
-                        <div class="highlight-icon">
-                            <!-- <i class="fas fa-laptop-code"></i> -->
-                             <img src="https://etudestech.com/wp-content/uploads/2022/12/entreprise-informatique-1536x1024.jpeg"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 25%;">
-
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 4 — Informatique & Solutions Digitales</h3>
-                            <p>La technologie au service de votre succès</p>
-                        </div>
-                    </div>
-                    
-                    <div class="digital-grid">
-                        <div class="digital-card">
-                            <!-- <i class="fas fa-code"></i> -->
-                             <img src="https://www.planete-communication.fr/wp-content/uploads/2023/02/article_dev_web_sur_mesure_1.jpg"  alt="Formation Linguistique" loading="lazy" style="width: 25%; height: 25%; border-radius: 25%;">
-
-                            <h4>Développement Web</h4>
+                <div class="modal-text">
+                    <span class="modal-tag">Technologie</span>
+                    <h2>Informatique & Solutions Digitales</h2>
+                    <p class="modal-desc">La technologie au service de votre succès avec nos solutions digitales sur mesure.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>💻 Développement Web</h4>
                             <ul>
                                 <li>Sites web vitrines et professionnels</li>
                                 <li>E-commerce et boutiques en ligne</li>
@@ -502,12 +638,8 @@
                                 <li>Maintenance et optimisation</li>
                             </ul>
                         </div>
-                        
-                        <div class="digital-card">
-                            <!-- <i class="fas fa-desktop"></i> -->
-                             <img src="https://media.istockphoto.com/id/1919863292/fr/photo/apprentissage-en-ligne-cours-sur-internet-et-apprentissage-en-ligne-avec-webinaires-tutoriels.jpg?s=612x612&w=0&k=20&c=ufG3Jo_1Lw7fUmJOG74jOd4UiGklqIQosuWeDQ55Mpg="  alt="Formation Linguistique" loading="lazy" style="width: 25%; height: 25%; border-radius: 25%;">
-
-                            <h4>Formation Informatique</h4>
+                        <div class="modal-service-group">
+                            <h4>🖥️ Formation Informatique</h4>
                             <ul>
                                 <li>Initiation à l'informatique</li>
                                 <li>Bureautique (Word, Excel, PowerPoint)</li>
@@ -515,12 +647,8 @@
                                 <li>Formation sur mesure</li>
                             </ul>
                         </div>
-                        
-                        <div class="digital-card">
-                            <!-- <i class="fas fa-server"></i> -->
-                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5cZ1AEO6cn9fiuLR47B4L65bUGR5TPv199w&s"  alt="Formation Linguistique" loading="lazy" style="width: 25%; height: 25%; border-radius: 25%;">
-
-                            <h4>Solutions Techniques</h4>
+                        <div class="modal-service-group">
+                            <h4>⚙️ Solutions Techniques</h4>
                             <ul>
                                 <li>Hébergement web et domaines</li>
                                 <li>Sécurité informatique</li>
@@ -529,858 +657,810 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Département 5 - Communication Visuelle -->
-                <div class="department-content" id="design">
-                    <div class="department-highlight">
-                        <div style="background-image: url(https://static.vecteezy.com/ti/vecteur-libre/t2/6972204-icone-interprete-glyphe-deux-couleurs-vectoriel.jpg); background-position: center;background-size: cover;  "class="highlight-icon">
-                            <!-- <i class="fas fa-paintbrush"></i> -->
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 5 — Communication Visuelle & Design</h3>
-                            <p>Donnez vie à votre identité</p>
-                        </div>
-                    </div>
-                    
-                    <div class="design-grid">
-                        <div class="design-item">
-                            <i class="fas fa-pen-nib"></i>
-                            <span>Logos & Identité</span>
-                        </div>
-                        <div class="design-item">
-                            <i class="fas fa-image"></i>
-                            <span>Affiches & Flyers</span>
-                        </div>
-                        <div class="design-item">
-                            <i class="fas fa-ad"></i>
-                            <span>Bannières & Social Media</span>
-                        </div>
-                        <div class="design-item">
-                            <i class="fas fa-id-card"></i>
-                            <span>Cartes de visite</span>
-                        </div>
-                        <div class="design-item">
-                            <i class="fas fa-palette"></i>
-                            <span>Design UI/UX</span>
-                        </div>
-                        <div class="design-item">
-                            <i class="fas fa-video"></i>
-                            <span>Montage vidéo</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Département 6 - Impression & Production -->
-                <div class="department-content" id="impression">
-                    <div class="department-highlight">
-                        <div class="highlight-icon">
-                            <i class="fas fa-print"></i>
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 6 — Impression & Production</h3>
-                            <p>Qualité d'impression exceptionnelle</p>
-                        </div>
-                    </div>
-                    
-                    <div class="print-grid">
-                        <div class="print-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Documents professionnels</span>
-                        </div>
-                        <div class="print-item">
-                            <i class="fas fa-images"></i>
-                            <span>Supports événementiels</span>
-                        </div>
-                        <div class="print-item">
-                            <i class="fas fa-palette"></i>
-                            <span>Produits personnalisés</span>
-                        </div>
-                        <div class="print-item">
-                            <i class="fas fa-chalkboard"></i>
-                            <span>Signalétique</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Département 7 - Conseil & Projets Spéciaux -->
-                <div class="department-content" id="conseil">
-                    <div class="department-highlight">
-                        <div style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiPDm4-DYFDDH7xclYFqmhuJ2nXlWcJF6UVRb8b46I64DatMbTIkSibno&s=10); background-position: center;background-size: cover;" class="highlight-icon">
-                            <!-- <i class="fas fa-lightbulb"></i> -->
-                        </div>
-                        <div class="highlight-text">
-                            <h3>Département 7 — Conseil, Innovation & Projets Spéciaux</h3>
-                            <p>Accompagnement stratégique pour vos projets les plus ambitieux</p>
-                        </div>
-                    </div>
-                    
-                    <div class="conseil-grid">
-                        <div class="conseil-card">
-                            <i class="fas fa-chess-king"></i>
-                            <h4>Conseil Stratégique</h4>
-                            <p>Audit, planification et mise en œuvre de stratégies d'entreprise.</p>
-                        </div>
-                        
-                        <div class="conseil-card">
-                            <i class="fas fa-graduation-cap"></i>
-                            <h4>Projets Éducatifs</h4>
-                            <p>Programmes sur mesure pour écoles et institutions académiques.</p>
-                        </div>
-                        
-                        <div class="conseil-card">
-                            <i class="fas fa-handshake"></i>
-                            <h4>Impact Communautaire</h4>
-                            <p>Projets sociaux et initiatives à fort impact sur la communauté.</p>
-                        </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- CTA Section -->
-            <div style="background-image: url(https://i.postimg.cc/9M78bTQh/Chat-GPT-Image-12-juin-2026-03-43-30.png);background-position: center;background-size: cover;" class="services-cta">
-                <div class="cta-content">
-                    <h3 style="color: white">Vous avez un projet en tête ?</h3>
-                    <p style="color: black;">Nos experts sont prêts à vous accompagner dans la réalisation de vos objectifs. Contactez-nous pour un devis personnalisé.</p>
-                    <a href="https://wa.me/22892557424" class="btn btn-primary">
-                        <i class="fas fa-comments"></i>
-                        Discuter de mon projet
-                    </a>
+        </div>
+    </div>
+
+    <!-- Modale 5 : Communication Visuelle -->
+    <div class="modal" id="modal-dept5">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept5">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Communication Visuelle" loading="lazy" />
+                </div>
+                <div class="modal-text">
+                    <span class="modal-tag">Créatif</span>
+                    <h2>Communication Visuelle & Design</h2>
+                    <p class="modal-desc">Donnez vie à votre identité visuelle avec des créations qui marquent les esprits.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>🎨 Nos prestations</h4>
+                            <ul>
+                                <li>Logos & identité visuelle</li>
+                                <li>Affiches & flyers</li>
+                                <li>Bannières & contenus pour réseaux sociaux</li>
+                                <li>Cartes de visite et papeterie</li>
+                                <li>Design UI/UX</li>
+                                <li>Montage vidéo</li>
+                                <li>Direction artistique</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale 6 : Impression & Production -->
+    <div class="modal" id="modal-dept6">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept6">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600" alt="Impression" loading="lazy" />
+                </div>
+                <div class="modal-text">
+                    <span class="modal-tag">Production</span>
+                    <h2>Impression & Production</h2>
+                    <p class="modal-desc">Des supports de communication de qualité pour vos événements et votre image de marque.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>🖨️ Nos prestations</h4>
+                            <ul>
+                                <li>Travaux d'impression (documents, flyers, affiches)</li>
+                                <li>Supports de communication pour événements</li>
+                                <li>Tableaux photo et encadrements</li>
+                                <li>Signalétique et panneaux</li>
+                                <li>Produits personnalisés</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale 7 : Conseil & Innovation -->
+    <div class="modal" id="modal-dept7">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal="modal-dept7">✕</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Conseil" loading="lazy" />
+                </div>
+                <div class="modal-text">
+                    <span class="modal-tag">Innovation</span>
+                    <h2>Conseil, Innovation & Projets Spéciaux</h2>
+                    <p class="modal-desc">Accompagnement stratégique pour vos projets les plus ambitieux.</p>
+                    <div class="modal-services">
+                        <div class="modal-service-group">
+                            <h4>🚀 Nos services</h4>
+                            <ul>
+                                <li>Conseil stratégique (audit, planification, mise en œuvre)</li>
+                                <li>Projets éducatifs et sociaux</li>
+                                <li>Programmes sur mesure pour écoles et institutions</li>
+                                <li>Projets à impact communautaire</li>
+                                <li>Innovation pédagogique</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SERVICES DÉTAILLÉS ========== -->
+    <section class="service-detail" id="service-detail-1">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://polysud-formation.com/wp-content/uploads/2022/03/formation-langues-767x767-min.jpg" alt="Formation Linguistique" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Pôle prioritaire</span>
+                    <h2>Formation Linguistique</h2>
+                    <p class="service-detail-desc">Nous proposons des formations linguistiques adaptées aux besoins académiques, professionnels et personnels, avec une approche immersive et personnalisée.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>🇬🇧 Cours d'anglais</h3>
+                            <ul>
+                                <li>Anglais général - Tous niveaux</li>
+                                <li>Anglais professionnel / des affaires</li>
+                                <li>Coaching personnel intensif</li>
+                                <li>Préparation aux examens (TOEFL, IELTS, TOEIC)</li>
+                                <li>Anglais conversationnel et oral</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>🇫🇷 Cours de français</h3>
+                            <ul>
+                                <li>Français général - Tous niveaux</li>
+                                <li>Français pour anglophones</li>
+                                <li>Amélioration de l'expression écrite et orale</li>
+                                <li>Français professionnel</li>
+                                <li>Préparation DELF/DALF</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>🇨🇳 Cours de chinois</h3>
+                            <ul>
+                                <li>Initiation à la langue chinoise</li>
+                                <li>Bases de communication quotidienne</li>
+                                <li>Culture chinoise et business</li>
+                                <li>Préparation HSK</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block full-width">
+                            <h3>🔄 Traduction & Interprétation</h3>
+                            <div class="translation-grid">
+                                <div>
+                                    <p><strong>Langues supportées :</strong></p>
+                                    <ul>
+                                        <li>Anglais ↔ Français</li>
+                                        <li>Français ↔ Chinois</li>
+                                        <li>Anglais ↔ Langues locales</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p><strong>Services :</strong></p>
+                                    <ul>
+                                        <li>Traduction de documents</li>
+                                        <li>Interprétation en temps réel</li>
+                                        <li>Sous-titrage vidéo</li>
+                                        <li>Services événementiels</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    
-
-    
-     <!-- Testimonials Section 
-<section class="section section-testimonials" id="testimonials">
-    <div class="container">
-        <div class="section-header text-center">
-            <span class="section-tag" style="color: var(--secondary);">Témoignages</span>
-            <h2>Ce que nos clients disent</h2>
-            <p class="section-subtitle">Des retours authentiques de personnes qui ont fait confiance à SAMPRO Consulting pour leur développement.</p>
-        </div>
-        
-        <!-- Nouveau Carrousel de témoignages -->
-        <div class="testimonials-showcase">
-            <div class="testimonial-container">
-                <!-- Témoignage 1 -->
-                <div class="testimonial-item active">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <span class="avatar-initials">KD</span>
-                                <div class="avatar-ring"></div>
-                            </div>
-                            <div class="testimonial-meta">
-                                <h4 class="client-name">Kodjo D.</h4>
-                                <p class="client-position">Directeur, Entreprise de Logistique</p>
-                                <div class="client-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
+    <section class="service-detail" id="service-detail-2">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://st2.depositphotos.com/1071909/7201/i/450/depositphotos_72019191-stock-photo-personal-development-career.jpg" alt="Développement des Compétences" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Développement</span>
+                    <h2>Formation & Développement des Compétences</h2>
+                    <p class="service-detail-desc">Optimisez le potentiel de vos équipes avec nos programmes de développement professionnel sur mesure.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>🎯 Nos spécialités</h3>
+                            <ul>
+                                <li>Séminaires professionnels</li>
+                                <li>Développement personnel</li>
+                                <li>Leadership et gestion d'équipe</li>
+                                <li>Prise de parole en public</li>
+                                <li>Orientation scolaire et professionnelle</li>
+                                <li>Coaching académique et professionnel</li>
+                                <li>Gestion du stress et bien-être au travail</li>
+                                <li>Formation en communication interpersonnelle</li>
+                            </ul>
                         </div>
-                        <div class="testimonial-body">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p>"La formation en anglais business m'a permis de négocier des contrats internationaux avec confiance. L'approche personnalisée et les mises en situation réelles ont fait toute la différence. Je recommande vivement SAMPRO Consulting à tous les professionnels."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <span class="testimonial-tag">Formation Linguistique</span>
-                            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> 2024</span>
+                        <div class="feature-block">
+                            <h3>📋 Nos méthodes</h3>
+                            <ul>
+                                <li>Ateliers pratiques et interactifs</li>
+                                <li>Mises en situation réelles</li>
+                                <li>Suivi personnalisé</li>
+                                <li>Évaluations et retours d'expérience</li>
+                                <li>Certifications et attestations</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Témoignage 2 -->
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <span class="avatar-initials">AM</span>
-                                <div class="avatar-ring"></div>
-                            </div>
-                            <div class="testimonial-meta">
-                                <h4 class="client-name">Amina M.</h4>
-                                <p class="client-position">Fondatrice, Boutique en ligne</p>
-                                <div class="client-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-body">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p>"Le site web créé par SAMPRO Consulting a boosté mes ventes de 200% en seulement 3 mois. L'équipe a su comprendre mes besoins et proposer une solution sur mesure. Un service professionnel de A à Z."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <span class="testimonial-tag">Solutions Digitales</span>
-                            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Témoignage 3 -->
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <span class="avatar-initials">ES</span>
-                                <div class="avatar-ring"></div>
-                            </div>
-                            <div class="testimonial-meta">
-                                <h4 class="client-name">Étudiant en Master</h4>
-                                <p class="client-position">Université de Lomé</p>
-                                <div class="client-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-body">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p>"Les cours de préparation aux examens d'anglais m'ont permis d'obtenir une excellente note. Les professeurs sont compétents, attentifs et toujours disponibles. Une expérience d'apprentissage exceptionnelle."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <span class="testimonial-tag">Formation Académique</span>
-                            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> 2023</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Témoignage 4 -->
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <span class="avatar-initials">TP</span>
-                                <div class="avatar-ring"></div>
-                            </div>
-                            <div class="testimonial-meta">
-                                <h4 class="client-name">Togocom Partnership</h4>
-                                <p class="client-position">Service Communication</p>
-                                <div class="client-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-body">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p>"Nous avons collaboré avec SAMPRO Consulting pour une formation en communication d'entreprise. L'équipe a fait preuve d'un grand professionnalisme et les résultats sont tangibles. Un partenaire de confiance."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <span class="testimonial-tag">Communication</span>
-                            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> 2024</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Témoignage 5 -->
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <span class="avatar-initials">KM</span>
-                                <div class="avatar-ring"></div>
-                            </div>
-                            <div class="testimonial-meta">
-                                <h4 class="client-name">Koffi M.</h4>
-                                <p class="client-position">Responsable RH, Société Minière</p>
-                                <div class="client-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-body">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <p>"SAMPRO Consulting a su répondre à nos besoins en formation linguistique avec un professionnalisme remarquable. Les résultats sont visibles et nos équipes sont plus performantes à l'international."</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <span class="testimonial-tag">Formation Professionnelle</span>
-                            <span class="testimonial-date"><i class="far fa-calendar-alt"></i> 2024</span>
-                        </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Contrôles de navigation -->
-            <div class="testimonial-controls">
-                <button class="testimonial-btn prev-btn" aria-label="Témoignage précédent">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="testimonial-dots">
+        </div>
+    </section>
+
+    <section class="service-detail" id="service-detail-3">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://www.inseec.com/wp-content/uploads/sites/32/2025/11/guide-inseec-hero-quest-ce-que-Marketing-Digital.jpg" alt="Marketing Digital" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Stratégie</span>
+                    <h2>Marketing Digital & Stratégie</h2>
+                    <p class="service-detail-desc">Boostez votre présence en ligne avec nos stratégies digitales innovantes et nos solutions sur mesure.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>📊 Nos services</h3>
+                            <ul>
+                                <li>Création et gestion de pages professionnelles</li>
+                                <li>Stratégies de visibilité digitale</li>
+                                <li>Création de contenu optimisé SEO</li>
+                                <li>Analyse de données et reporting</li>
+                                <li>Formation en marketing digital</li>
+                                <li>Campagnes Facebook Ads & Google Ads</li>
+                                <li>Email marketing et stratégies d'acquisition</li>
+                                <li>Community management</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>🎯 Nos atouts</h3>
+                            <ul>
+                                <li>Approche data-driven</li>
+                                <li>Stratégies personnalisées</li>
+                                <li>Veille technologique</li>
+                                <li>Suivi et optimisation continue</li>
+                                <li>ROI mesurable</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="service-detail-4">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://etudestech.com/wp-content/uploads/2022/12/entreprise-informatique-1536x1024.jpeg" alt="Solutions Digitales" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Technologie</span>
+                    <h2>Informatique & Solutions Digitales</h2>
+                    <p class="service-detail-desc">La technologie au service de votre succès avec nos solutions digitales sur mesure.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>💻 Développement Web</h3>
+                            <ul>
+                                <li>Sites web vitrines et professionnels</li>
+                                <li>E-commerce et boutiques en ligne</li>
+                                <li>Applications web sur mesure</li>
+                                <li>Maintenance et optimisation</li>
+                                <li>Hébergement web et domaines</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>🖥️ Formation Informatique</h3>
+                            <ul>
+                                <li>Initiation à l'informatique</li>
+                                <li>Bureautique (Word, Excel, PowerPoint)</li>
+                                <li>Outils numériques professionnels</li>
+                                <li>Formation sur mesure</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>⚙️ Solutions Techniques</h3>
+                            <ul>
+                                <li>Sécurité informatique</li>
+                                <li>Support technique</li>
+                                <li>Conseil en digitalisation</li>
+                                <li>Migration et transition numérique</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="service-detail-5">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="Communication Visuelle" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Créatif</span>
+                    <h2>Communication Visuelle & Design</h2>
+                    <p class="service-detail-desc">Donnez vie à votre identité visuelle avec des créations qui marquent les esprits.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>🎨 Nos prestations</h3>
+                            <ul>
+                                <li>Logos & identité visuelle</li>
+                                <li>Affiches & flyers</li>
+                                <li>Bannières & contenus pour réseaux sociaux</li>
+                                <li>Cartes de visite et papeterie</li>
+                                <li>Design UI/UX</li>
+                                <li>Montage vidéo</li>
+                                <li>Direction artistique</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>✨ Notre approche</h3>
+                            <ul>
+                                <li>Analyse des besoins</li>
+                                <li>Création sur mesure</li>
+                                <li>Révisions et ajustements</li>
+                                <li>Livraison des fichiers prêts à l'emploi</li>
+                                <li>Accompagnement post-livraison</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="service-detail-6">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600" alt="Impression" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Production</span>
+                    <h2>Impression & Production</h2>
+                    <p class="service-detail-desc">Des supports de communication de qualité pour vos événements et votre image de marque.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>🖨️ Nos prestations</h3>
+                            <ul>
+                                <li>Travaux d'impression (documents, flyers, affiches)</li>
+                                <li>Supports de communication pour événements</li>
+                                <li>Tableaux photo et encadrements</li>
+                                <li>Signalétique et panneaux</li>
+                                <li>Produits personnalisés</li>
+                                <li>Impression grand format</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>🎯 Nos atouts</h3>
+                            <ul>
+                                <li>Qualité d'impression exceptionnelle</li>
+                                <li>Délais de réalisation rapides</li>
+                                <li>Conseils personnalisés</li>
+                                <li>Suivi de production</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail" id="service-detail-7">
+        <div class="container">
+            <button class="service-back" onclick="closeServiceDetail()">← Retour aux services</button>
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600" alt="Conseil" loading="lazy" />
+                </div>
+                <div class="service-detail-content">
+                    <span class="service-detail-tag">Innovation</span>
+                    <h2>Conseil, Innovation & Projets Spéciaux</h2>
+                    <p class="service-detail-desc">Accompagnement stratégique pour vos projets les plus ambitieux.</p>
+                    <div class="service-detail-features">
+                        <div class="feature-block">
+                            <h3>🚀 Nos services</h3>
+                            <ul>
+                                <li>Conseil stratégique (audit, planification, mise en œuvre)</li>
+                                <li>Projets éducatifs et sociaux</li>
+                                <li>Programmes sur mesure pour écoles et institutions</li>
+                                <li>Projets à impact communautaire</li>
+                                <li>Innovation pédagogique</li>
+                                <li>Accompagnement de projets complexes</li>
+                            </ul>
+                        </div>
+                        <div class="feature-block">
+                            <h3>💡 Notre approche</h3>
+                            <ul>
+                                <li>Analyse approfondie des besoins</li>
+                                <li>Co-construction de solutions</li>
+                                <li>Suivi et évaluation continue</li>
+                                <li>Garantie de résultats</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="service-detail-cta">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DIRECTEUR ========== -->
+    <section class="section section-director" id="director">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag" data-key="directorTag">Leadership</span>
+                <h2>Le Directeur de <span class="text-accent">SAMPRO Consulting</span></h2>
+                <p data-key="directorSub">Découvrez le parcours et la vision du fondateur qui guide notre excellence.</p>
+            </div>
+
+            <div class="director-wrapper reveal">
+                <div class="director-main">
+                    <div class="director-photo">
+                        <img src="https://i.postimg.cc/TYqb3RRR/IMG-20251229-WA0007.jpg" alt="DEGBEDJI Koffi Samuel" loading="lazy" />
+                        <div class="director-photo-badge"><span>Fondateur &amp; CEO</span></div>
+                    </div>
+                    <div class="director-info">
+                        <h3>DEGBEDJI Koffi Samuel</h3>
+                        <p class="director-title">Fondateur &amp; CEO de SAMPRO Consulting</p>
+                        <div class="director-badges">
+                            <span class="badge">🎓 Expert en Formation</span>
+                            <span class="badge">📊 Consultant Stratégique</span>
+                            <span class="badge">🌍 Leader Panafricain</span>
+                        </div>
+                        <div class="director-bio">
+                            <h4>Biographie</h4>
+                            <p>Passionné par le développement des compétences et la transformation digitale, <strong>DEGBEDJI Koffi Samuel</strong> a fondé SAMPRO Consulting avec une vision claire : <strong>rendre l'excellence accessible à tous</strong>.</p>
+                            <p>Fort de plusieurs années d'expérience dans les domaines de la <strong>formation linguistique, du coaching professionnel et des solutions digitales</strong>, il a su bâtir une structure qui allie innovation pédagogique et accompagnement personnalisé.</p>
+                            <p>Sous sa direction, SAMPRO Consulting est devenu un acteur incontournable au Togo et en Afrique, reconnu pour la <strong>qualité de ses formations</strong> et l'<strong>impact durable</strong> de ses accompagnements.</p>
+                        </div>
+                        <div class="director-skills">
+                            <h4>Domaines d'Expertise</h4>
+                            <div class="skills-list">
+                                <span class="skill-tag">Formation Linguistique</span>
+                                <span class="skill-tag">Coaching Professionnel</span>
+                                <span class="skill-tag">Marketing Digital</span>
+                                <span class="skill-tag">Développement Web</span>
+                                <span class="skill-tag">Leadership</span>
+                                <span class="skill-tag">Communication</span>
+                                <span class="skill-tag">Gestion de Projet</span>
+                                <span class="skill-tag">Innovation Pédagogique</span>
+                            </div>
+                        </div>
+                        <div class="director-social">
+                            <a href="https://www.linkedin.com/feed/" class="social-link">LinkedIn</a>
+                            <a href="https://wa.me/22892557424" class="social-link">WhatsApp</a>
+                            <a href="mailto:samproconsulting90@gmail.com" class="social-link">Email</a>
+                            <a href="https://www.facebook.com/SamProsperosArt/" class="social-link">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="director-quote">
+                    <div class="quote-icon">“</div>
+                    <blockquote>"Chaque projet est une opportunité d'impact, et chaque apprenant mérite les outils pour construire son avenir avec confiance. Notre approche combine excellence académique, innovation digitale et accompagnement humain."</blockquote>
+                    <cite>— DEGBEDJI Koffi Samuel, Fondateur &amp; CEO</cite>
+                </div>
+
+                <div class="director-timeline">
+                    <h4>Parcours &amp; Engagement</h4>
+                    <div class="timeline-grid">
+                        <div class="timeline-item">
+                            <span class="timeline-year">2020</span>
+                            <div class="timeline-content">
+                                <h5>Fondation de SAMPRO Consulting</h5>
+                                <p>Création du cabinet avec une vision de développement des compétences en Afrique.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2021</span>
+                            <div class="timeline-content">
+                                <h5>Expansion des Services</h5>
+                                <p>Lancement des départements de formation linguistique et solutions digitales.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2022</span>
+                            <div class="timeline-content">
+                                <h5>Reconnaissance &amp; Partenariats</h5>
+                                <p>Établissement de partenariats avec des universités et entreprises internationales.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2023</span>
+                            <div class="timeline-content">
+                                <h5>Innovation &amp; Impact</h5>
+                                <p>Intégration des nouvelles technologies et impact social à travers des programmes communautaires.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2024</span>
+                            <div class="timeline-content">
+                                <h5>Leadership Panafricain</h5>
+                                <p>Extension des activités et rayonnement à travers l'Afrique de l'Ouest.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="director-cta">
+                    <a href="#contact" class="btn btn-primary">📩 Échanger avec le Directeur</a>
+                    <a href="https://wa.me/22892557424" class="btn btn-outline">💬 WhatsApp Direct</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section section-testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="tag" data-key="testTag">Témoignages</span>
+                <h2>Ce qu'ils disent de <span class="text-accent">nous</span></h2>
+                <p data-key="testSub">Des retours authentiques de personnes qui ont fait confiance à SAMPRO Consulting.</p>
+            </div>
+
+            <div class="testimonial-carousel reveal">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-item">
+                            <div class="stars">★ ★ ★ ★ ★</div>
+                            <blockquote data-key="test1">"La formation en anglais business m'a permis de négocier des contrats internationaux avec confiance. L'approche personnalisée a fait toute la différence."</blockquote>
+                            <div class="author">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaO-dgjYPozOwRHS4L-1WGfIF9yL_DOems51fDRQm0g7kxJyh3W0VCsCg&s=10" alt="Kodjo D." loading="lazy" />
+                                <div class="info">
+                                    <h4>Kodjo D.</h4>
+                                    <p data-key="test1role">Directeur, Logistique</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">★ ★ ★ ★ ★</div>
+                            <blockquote data-key="test2">"Le site web créé par SAMPRO Consulting a boosté nos ventes de 200% en seulement 3 mois. Une équipe professionnelle et à l'écoute."</blockquote>
+                            <div class="author">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXKt6OpGc7iHjVJSEUr9pV7EyG821ENIwipSvKStOVTQ&s=10" alt="Amina M." loading="lazy" />
+                                <div class="info">
+                                    <h4>Amina M.</h4>
+                                    <p data-key="test2role">Fondatrice, E-commerce</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-item">
+                            <div class="stars">★ ★ ★ ★ ★</div>
+                            <blockquote data-key="test3">"Une expérience d'apprentissage exceptionnelle. Les professeurs sont compétents et toujours disponibles. Je recommande vivement !"</blockquote>
+                            <div class="author">
+                                <img src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="Étudiant" loading="lazy" />
+                                <div class="info">
+                                    <h4 data-key="test3name">Étudiant en Master</h4>
+                                    <p data-key="test3role">Université de Lomé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dots" id="testimonialDots">
                     <span class="dot active" data-index="0"></span>
                     <span class="dot" data-index="1"></span>
                     <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
-                    <span class="dot" data-index="4"></span>
                 </div>
-                <button class="testimonial-btn next-btn" aria-label="Témoignage suivant">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Statistiques de confiance -->
-        <!-- <div class="trust-stats">
-            <div class="trust-stat-item">
-                <span class="trust-number" data-count="150">0</span>
-                <span class="trust-label">Clients satisfaits</span>
-            </div>
-            <div class="trust-stat-item">
-                <span class="trust-number" data-count="98">0</span>
-                <span class="trust-label">% de satisfaction</span>
-            </div>
-            <div class="trust-stat-item">
-                <span class="trust-number" data-count="40">0</span>
-                <span class="trust-label">Projets réalisés</span>
-            </div>
-            <div class="trust-stat-item">
-                <span class="trust-number" data-count="5">0</span>
-                <span class="trust-label">Étoiles sur 5</span>
-            </div>
-        </div> -->
-        
-        <!-- Partners Section -->
-        <div class="partners-section">
-            <h3>Ils nous font confiance</h3>
-            <div class="partners-grid">
-                <div class="partner-item">
-                    <i class="fas fa-building-columns"></i>
-                    <span>Universités</span>
-                </div>
-                <div class="partner-item">
-                    <i class="fas fa-building"></i>
-                    <span>Entreprises</span>
-                </div>
-                <div class="partner-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Étudiants</span>
-                </div>
-                <div class="partner-item">
-                    <i class="fas fa-users"></i>
-                    <span>Startups</span>
-                </div>
-                <div class="partner-item">
-                    <i class="fas fa-globe-africa"></i>
-                    <span>ONG</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-             
-
-    <!-- Portfolio Section -->
-    <!-- <section class="section section-portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag">Nos réalisations</span>
-                <h2>Projets & Réalisations</h2>
-                <p class="section-subtitle">Découvrez quelques-uns de nos projets qui ont transformé les idées en réalité.</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=600')">
-                        <div class="portfolio-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Site E-commerce</h4>
-                        <p>Création d'une boutique en ligne complète pour une marque de vêtements locale.</p>
-                        <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600')">
-                        <div class="portfolio-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Séminaire Leadership</h4>
-                        <p>Formation en leadership pour 50 cadres d'une entreprise multinationale.</p>
-                        <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600')">
-                        <div class="portfolio-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Formation Anglais Business</h4>
-                        <p>Programme intensif d'anglais pour 30 employés du secteur bancaire.</p>
-                        <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-
-
-
-
-    <!-- Director Section -->
-<section class="section section-director" id="director">
-    <div class="container">
-        <div class="section-header text-center">
-            <span class="section-tag">Leadership</span>
-            <h2>Le Directeur de SAMPRO Consulting</h2>
-            <p class="section-subtitle">Découvrez le parcours et la vision du fondateur qui guide notre excellence.</p>
-        </div>
-
-        <div class="director-container">
-            <div class="director-profile">
-                <!-- Photo du Directeur -->
-                <div class="director-photo">
-                    <div class="photo-frame">
-                        <img src="https://i.postimg.cc/TYqb3RRR/IMG-20251229-WA0007.jpg" alt="DEGBEDJI Koffi Samuel - Directeur SAMPRO Consulting" loading="lazy">
-                        <div class="photo-badge">
-                            <span>Fondateur & CEO</span>
-                        </div>
-                    </div>
-                    <div class="director-social">
-                        <a href="https://www.linkedin.com/feed/" class="social-icon" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://wa.me/22892557424" class="social-icon" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="mailto:samproconsulting90@gmail.com" class="social-icon" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://www.facebook.com/SamProsperosArt/" class="social-icon" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Informations du Directeur -->
-                <div class="director-info">
-                    <div class="director-header">
-                        <h3>DEGBEDJI Koffi Samuel</h3>
-                        <p class="director-title">Fondateur & CEO de SAMPRO Consulting</p>
-                        <div class="director-badges">
-                            <span class="badge"><i class="fas fa-graduation-cap"></i> Expert en Formation</span>
-                            <span class="badge"><i class="fas fa-chart-line"></i> Consultant Stratégique</span>
-                            <span class="badge"><i class="fas fa-globe-africa"></i> Leader Panafricain</span>
-                        </div>
-                    </div>
-
-                    <div class="director-bio">
-                        <h4> Biographie</h4>
-                        <p>
-                            Passionné par le développement des compétences et la transformation digitale, <strong>DEGBEDJI Koffi Samuel</strong> a fondé SAMPRO Consulting avec une vision claire : <strong>rendre l'excellence accessible à tous</strong>.
-                        </p>
-                        <p>
-                            Fort de plusieurs années d'expérience dans les domaines de la <strong>formation linguistique, du coaching professionnel et des solutions digitales</strong>, il a su bâtir une structure qui allie innovation pédagogique et accompagnement personnalisé.
-                        </p>
-                        <p>
-                            Sous sa direction, SAMPRO Consulting est devenu un acteur incontournable au Togo et en Afrique, reconnu pour la <strong>qualité de ses formations</strong> et l'<strong>impact durable</strong> de ses accompagnements.
-                        </p>
-                    </div>
-
-                    <!-- <div class="director-achievements">
-                        <h4><i class="fas fa-trophy"></i> Réalisations Clés</h4>
-                        <div class="achievements-grid">
-                            <div class="achievement-item">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="achievement-content">
-                                    <span class="achievement-number">150+</span>
-                                    <span class="achievement-label">Professionnels formés</span>
-                                </div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <div class="achievement-content">
-                                    <span class="achievement-number">40+</span>
-                                    <span class="achievement-label">Entreprises accompagnées</span>
-                                </div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <div class="achievement-content">
-                                    <span class="achievement-number">5+</span>
-                                    <span class="achievement-label">Années d'expérience</span>
-                                </div>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <div class="achievement-content">
-                                    <span class="achievement-number">10+</span>
-                                    <span class="achievement-label">Pays d'influence</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <div class="director-skills">
-                        <h4> Domaines d'Expertise</h4>
-                        <!-- <div class="skills-list"> -->
-                            <span class="skill-tag" style="color: #27ae60;">Formation Linguistique</span>
-                            <span class="skill-tag" style="color: #27ae60;">Coaching Professionnel</span>
-                            <span class="skill-tag" style="color: #27ae60;">Marketing Digital</span>
-                            <span class="skill-tag" style="color: #27ae60;">Développement Web</span>
-                            <span class="skill-tag" style="color: #27ae60;">Leadership</span>
-                            <span class="skill-tag" style="color: #27ae60;">Communication</span>
-                            <span class="skill-tag" style="color: #27ae60;">Gestion de Projet</span>
-                            <span class="skill-tag" style="color: #27ae60;">Innovation Pédagogique</span>
-                        </div>
-                    </div>
-
-                    <!-- <div class="director-quote-box">
-                        <i class="fas fa-quote-left"></i>
-                        <p>
-                            "Chaque projet est une opportunité d'impact, et chaque apprenant mérite les outils pour construire son avenir avec confiance. Notre approche combine excellence académique, innovation digitale et accompagnement humain."
-                        </p>
-                        <span class="quote-author">— DEGBEDJI Koffi Samuel</span>
-                    </div> -->
-
-                    <!-- <div class="director-cta">
-                        <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-comment"></i>
-                            Échanger avec le Directeur
-                        </a>
-                        <a href="https://wa.me/22892557424" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary);">
-                            <i class="fab fa-whatsapp"></i>
-                            WhatsApp Direct
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Timeline / Parcours -->
-        <div class="director-timeline">
-            <div class="section-header text-center">
-                <h3>Parcours & Engagement</h3>
-            </div>
-            <div class="timeline-grid">
-                <div class="timeline-item">
-                    <div class="timeline-year">2020</div>
-                    <div class="timeline-content">
-                        <h4>Fondation de SAMPRO Consulting</h4>
-                        <p>Création du cabinet avec une vision de développement des compétences en Afrique.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2021</div>
-                    <div class="timeline-content">
-                        <h4>Expansion des Services</h4>
-                        <p>Lancement des départements de formation linguistique et solutions digitales.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2022</div>
-                    <div class="timeline-content">
-                        <h4>Reconnaissance & Partenariats</h4>
-                        <p>Établissement de partenariats avec des universités et entreprises internationales.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2023</div>
-                    <div class="timeline-content">
-                        <h4>Innovation & Impact</h4>
-                        <p>Intégration des nouvelles technologies et impact social à travers des programmes communautaires.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <div class="timeline-content">
-                        <h4>Leadership Panafricain</h4>
-                        <p>Extension des activités et rayonnement à travers l'Afrique de l'Ouest.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-    <!-- Contact Section -->
-    <section class="section section-contact" id="contact">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-tag">Contactez-nous</span>
-                <h2>Prêt à transformer votre vision ?</h2>
-                <p class="section-subtitle">Discutons de votre projet et trouvons ensemble la solution parfaite.</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Notre équipe vous attend</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Adresse</h4>
-                            <p>Djidjolé, Lomé-Togo</p>
-                            <p class="contact-sub">Centre d'affaires digital</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email & Contact</h4>
-                            <p>samproconsulting90@gmail.com</p>
-                            <p class="contact-sub">Réponse sous 24h</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Téléphone & WhatsApp</h4>
-                            <p>+228 92557424</p>
-                            <p>+228 96101743</p>
-                            <p class="contact-sub">Support WhatsApp disponible</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Informations légales</h4>
-                            <p>RCCM: TG-LFW-01-2024-A10-02551</p>
-                            <p>NIF: 1001947473</p>
-                            <p class="contact-sub">Cabinet certifié</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-hours">
-                        <h4>Horaires d'ouverture</h4>
-                        <p><i class="fas fa-calendar-alt"></i> Lundi - Vendredi : 8h00 - 20h00</p>
-                        <p><i class="fas fa-calendar-alt"></i> Samedi : 9h00 - 14h00 (sur rendez-vous)</p>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/SamProsperosArt/" class="social-icon" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/feed/" class="social-icon" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.instagram.com/samwinskey/" class="social-icon" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@samproconsulting" class="social-icon" title="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://wa.me/22892557424" class="social-icon" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <div class="form-header">
-                        <h3>Envoyez-nous un message</h3>
-                        <p>Remplissez ce formulaire et nous vous recontacterons dans les plus brefs délais.</p>
-                    </div>
-                    
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label><i class="fas fa-user"></i> Votre nom</label>
-                                <input type="text" placeholder="Votre nom complet" required>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fas fa-phone"></i> Téléphone</label>
-                                <input type="tel" placeholder="Votre numéro de téléphone" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-envelope"></i> Adresse email</label>
-                            <input type="email" placeholder="votre@email.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-tag"></i> Sujet de votre message</label>
-                            <select>
-                                <option value="" disabled selected>Sélectionnez un sujet</option>
-                                <option value="formation">Formation linguistique</option>
-                                <option value="digital">Solutions digitales</option>
-                                <option value="marketing">Marketing digital</option>
-                                <option value="design">Design graphique</option>
-                                <option value="conseil">Conseil stratégique</option>
-                                <option value="autre">Autre demande</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label><i class="fas fa-comment"></i> Votre message</label>
-                            <textarea placeholder="Décrivez votre projet ou posez vos questions..." rows="5" required></textarea>
-                        </div>
-                        
-                        <div class="form-footer">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="newsletter">
-                                <label for="newsletter">S'abonner à notre newsletter</label>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i>
-                                Envoyer le message
-                            </button>
-                        </div>
-                        
-                        <p class="form-note">
-                            <i class="fas fa-lock"></i>
-                            Vos données sont protégées et ne seront jamais partagées.
-                        </p>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- CTA Bonus -->
-            <div style="background-image: url(https://i.postimg.cc/Pxw3yZ5s/Chat-GPT-Image-12-juin-2026-03-40-19.png); background-position: center; background-size: cover;" class="consultation-cta">
-                <div class="cta-icon">
-                    <!-- <i class="fas fa-calendar-check"></i> -->
-                             <img src="https://img.freepik.com/vecteurs-premium/style-icone-du-calendrier-vectoriel_822882-321976.jpg?semt=ais_hybrid&w=740&q=80"  alt="Formation Linguistique" loading="lazy" style="width: 100%; height: 100%; border-radius: 50%;">
-
-                </div>
-                <h3>Besoin d'une consultation personnalisée ?</h3>
-                <p>Planifions un appel de découverte gratuit de 30 minutes pour discuter de vos besoins spécifiques.</p>
-                <a href="https://wa.me/92557424" class="btn btn-secondary">
-                    <!-- <i class="fas fa-video"></i> -->
-                    Réserver une consultation gratuite
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="mega-footer">
+    <!-- ========== CONTACT ========== -->
+    <section class="section section-contact" id="contact">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col brand-col">
-                    <div class="logo-footer">
-                        <span style="background-image: url(https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png); background-position: center; background-size: cover;" class="logo-box"></span>
-                        <div class="logo-text">SAMPRO<span>CONSULTING</span></div>
+            <div class="section-header reveal">
+                <span class="tag" data-key="contactTag">Contactez-nous</span>
+                <h2 style="color:#fff;">Parlons de votre <span style="color:var(--bleu-ciel);">projet</span></h2>
+                <p data-key="contactSub">Une question ? Un projet ? Nous sommes là pour vous accompagner.</p>
+            </div>
+
+            <div class="contact-wrapper reveal">
+                <div class="contact-left">
+                    <div class="contact-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800" alt="Contact SAMPRO" loading="lazy" />
+                        <div class="contact-image-overlay">
+                            <div class="overlay-content">
+                                <span class="overlay-icon">📞</span>
+                                <h4>Une question ?</h4>
+                                <p>Nous vous répondons sous 24h</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="brand-description">
-                        Leader du conseil et de la formation à Lomé. Nous accompagnons les professionnels et les étudiants dans la maîtrise des langues et des outils digitaux pour conquérir le marché international.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/SamProsperosArt/"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/22892557424"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/samwinskey/"><i class="fab fa-instagram"></i></a>
+
+                    <div class="contact-info">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-icon">📍</span>
+                                <div>
+                                    <h4 data-key="addressLabel">Adresse</h4>
+                                    <p data-key="address">Djidjolé, Lomé — Togo</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">📧</span>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>samproconsulting90@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">📱</span>
+                                <div>
+                                    <h4 data-key="phoneLabel">Téléphone</h4>
+                                    <p>+228 92557424 / +228 96101743</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-icon">🕐</span>
+                                <div>
+                                    <h4 data-key="hoursLabel">Horaires</h4>
+                                    <p data-key="hours">Lun - Ven : 8h00 - 20h00</p>
+                                    <p data-key="hoursSat" style="font-size:0.75rem; opacity:0.5;">Sam : 9h00 - 14h00 (sur rendez-vous)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-social">
+                            <span data-key="followUs">Suivez-nous</span>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/SamProsperosArt/" class="social-link">Facebook</a>
+                                <a href="https://www.linkedin.com/feed/" class="social-link">LinkedIn</a>
+                                <a href="https://www.instagram.com/samwinskey/" class="social-link">Instagram</a>
+                                <a href="https://wa.me/22892557424" class="social-link">WhatsApp</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="footer-col">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="#home">Accueil</a></li>
-                        <li><a href="#about">À propos</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#testimonials">Témoignages</a></li>
-                        <li><a href="#portfolio">Réalisations</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+                <div class="contact-right">
+                    <div class="contact-form">
+                        <div class="form-header">
+                            <h3 data-key="formTitle">Envoyez-nous un message</h3>
+                            <p data-key="formDesc">Remplissez ce formulaire et nous vous répondrons sous 24h.</p>
+                        </div>
 
-                <div class="footer-col">
-                    <h3>Nos Formations</h3>
-                    <ul>
-                        <li><a href="#">Anglais Business</a></li>
-                        <li><a href="#">Marketing Digital</a></li>
-                        <li><a href="#">Développement Web</a></li>
-                        <li><a href="#">Leadership & Management</a></li>
-                        <li><a href="#">Préparation TOEFL / IELTS</a></li>
-                    </ul>
-                </div>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-key="nameLabel">Nom complet</label>
+                                    <input type="text" placeholder="Votre nom" required />
+                                </div>
+                                <div class="form-group">
+                                    <label data-key="phoneLabel">Téléphone</label>
+                                    <input type="tel" placeholder="Votre numéro" required />
+                                </div>
+                            </div>
 
-                <div class="footer-col">
-                    <h3>Infos Pratiques</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Lun - Ven : 08h00 - 20h00<br>Sam : 09h00 - 13h00</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Djidjolé, Lomé - Togo</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>samproconsulting90@gmail.com</span>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="votre@email.com" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label data-key="subjectLabel">Sujet</label>
+                                <select>
+                                    <option value="" data-key="selectSubject">Sélectionnez un sujet</option>
+                                    <option data-key="subject1">Formation linguistique</option>
+                                    <option data-key="subject2">Solutions digitales</option>
+                                    <option data-key="subject3">Marketing digital</option>
+                                    <option data-key="subject4">Design graphique</option>
+                                    <option data-key="subject5">Conseil stratégique</option>
+                                    <option data-key="subject6">Autre demande</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label data-key="messageLabel">Message</label>
+                                <textarea rows="4" placeholder="Décrivez votre projet en détail..." required></textarea>
+                            </div>
+
+                            <div class="form-footer">
+                                <div class="form-check">
+                                    <input type="checkbox" id="newsletter" />
+                                    <label for="newsletter" data-key="newsletter">Je souhaite recevoir la newsletter</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary" data-key="sendBtn">Envoyer le message</button>
+                            </div>
+
+                            <p class="form-note" data-key="formNote">Vos données sont protégées et ne seront jamais partagées.</p>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="bottom-flex">
-                    <p>&copy; 2024 SAMPRO Consulting. Tous droits réservés.</p>
-                    <!-- Dans le footer, avant les liens légaux -->
-<div class="theme-indicator">
-    <span>Thème : </span>
-    <span id="themeIndicator">Clair</span>
-</div>
-                    <div class="legal-links">
-                        <a href="#">Mentions Légales</a>
-                        <a href="#">Politique de Confidentialité</a>
+            <div class="cta-bonus reveal"style="background-image: url(https://i.postimg.cc/Pxw3yZ5s/Chat-GPT-Image-12-juin-2026-03-40-19.png); background-position:"center"; background-size:cover; background-repeat:no-repeat;">
+                <div class="cta-bonus-content" >
+                    <span class="cta-bonus-icon"></span>
+                    <h3 data-key="ctaBonusTitle">Besoin d'une consultation gratuite ?</h3>
+                    <p data-key="ctaBonusDesc">Réservez un appel de 30 minutes pour discuter de vos besoins spécifiques.</p>
+                    <a href="https://wa.me/22892557424" class="btn btn-primary" data-key="ctaBonusBtn">Réserver maintenant</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom:16px;">
+                        <img src="https://i.postimg.cc/C1c1vZrS/Sans-titre-1-Recupere.png" alt="SAMPRO" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,0.04);" />
+                        <div class="logo-text">
+                            <h1 style="font-size:1.1rem; color:#fff;">SAMPRO<span style="color:var(--bleu-ciel);"> Consulting</span></h1>
+                        </div>
                     </div>
+                    <p data-key="footerDesc">Leader du conseil et de la formation à Lomé. Nous accompagnons les professionnels et les étudiants dans la maîtrise des langues et des outils digitaux.</p>
+                    <div class="slogan" data-key="slogan">« Parler avec assurance, inspirer avec passion, impacter avec conviction »</div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-key="navTitle">Navigation</h4>
+                    <ul>
+                        <li><a href="#home" data-key="home">Accueil</a></li>
+                        <li><a href="#about" data-key="about">À propos</a></li>
+                        <li><a href="#services" data-key="services">Services</a></li>
+                        <li><a href="#testimonials" data-key="testimonials">Témoignages</a></li>
+                        <li><a href="#contact" data-key="contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-key="formationsTitle">Formations</h4>
+                    <ul>
+                        <li><a href="#" data-key="formation1">Anglais Business</a></li>
+                        <li><a href="#" data-key="formation2">Marketing Digital</a></li>
+                        <li><a href="#" data-key="formation3">Développement Web</a></li>
+                        <li><a href="#" data-key="formation4">Leadership &amp; Management</a></li>
+                        <li><a href="#" data-key="formation5">Préparation TOEFL / IELTS</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-key="contactTitle">Contact</h4>
+                    <ul>
+                        <li><a href="mailto:samproconsulting90@gmail.com">samproconsulting90@gmail.com</a></li>
+                        <li><a href="tel:+22892557424">+228 92557424</a></li>
+                        <li><a href="#" data-key="address">Djidjolé, Lomé</a></li>
+                        <li class="legal-info">RCCM: TG-LFW-01-2024-A10-02551</li>
+                        <li class="legal-info">NIF: 1001947473</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SAMPRO Consulting. <span data-key="rights">Tous droits réservés</span>. <span style="color: transparent;">GKR/S</span></p>
+                <div class="legal-links">
+                    <a href="#" data-key="legal1">Mentions légales</a>
+                    <a href="#" data-key="legal2">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="./script.js"></script>
+    <!-- ========== SCRIPTS ========== -->
+    <script src="script.js"></script>
 </body>
 </html>
